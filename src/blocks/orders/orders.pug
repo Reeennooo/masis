@@ -1,0 +1,442 @@
+.container.tables-container
+    -
+        const table = {
+            mod: 'new',
+            header: [
+                {
+                    name: 'Обращения',
+                    count: '( 12 )',
+                }
+            ],
+            rows: [
+                {
+                    cardtype: 'order',
+                    columns: [
+                        {
+                            num: '#22',
+                            tag: 'Течь на земле',
+                            tagMod: 'blue',
+                        },
+                        {
+                            street: 'Улица Пушкина, 12',
+                        },
+                        {
+                            tel: '+7 (999) 123-45-67',
+                        },
+                        {
+                            join: true
+                        }
+                    ]
+                },
+                {
+                    cardtype: 'order',
+                    columns: [
+                        {
+                            num: '#21',
+                            tag: 'Излив на рельефа',
+                            tagMod: 'green',
+                        },
+                        {
+                            street: 'Улица Морская, 24',
+                        },
+                        {
+                            tel: '+7 (999) 123-45-67',
+                        },
+                        {
+                            join: true
+                        }
+                    ]
+                },
+                {
+                    cardtype: 'order',
+                    columns: [
+                        {
+                            num: '#20',
+                            tag: 'Повреждение асфальта',
+                            tagMod: 'purple',
+                        },
+                        {
+                            street: 'Улица Героев, 1',
+                        },
+                        {
+                            tel: '+7 (999) 123-45-67',
+                        },
+                        {
+                            join: true
+                        }
+                    ]
+                },
+                {
+                    cardtype: 'order',
+                    columns: [
+                        {
+                            num: '#19',
+                            tag: 'Подключение / Отключение',
+                            tagMod: 'green',
+                        },
+                        {
+                            street: 'Улица Некрасова, 19',
+                        },
+                        {
+                            tel: '+7 (999) 123-45-67',
+                        },
+                        {
+                            join: true
+                        }
+                    ]
+                },
+                {
+                    cardtype: 'order',
+                    columns: [
+                        {
+                            num: '#18',
+                            tag: 'Вызов представителя',
+                        },
+                        {
+                            street: 'Улица Героев, 1',
+                        },
+                        {
+                            tel: '+7 (999) 123-45-67',
+                        },
+                        {
+                            join: true
+                        }
+                    ]
+                }
+            ],
+        }
+    +table(table)
+
+    -
+        const table2 = {
+            mod: 'new-orders',
+            header: [
+                {
+                    name: 'Новые',
+                    count: '( 5 )',
+                }
+                ],
+            rows: [
+                {
+                    cardtype: 'order',
+                    columns: [
+                        {
+                            num: '#22',
+                            tag: 'Течь на земле',
+                            tagMod: 'blue',
+                        },
+                        {
+                            street: 'Улица Пушкина, 12',
+                            setAssigment: true,
+                        },
+                        {
+                            interconnected: true,
+                            drop: true,
+                            comments: true
+                        }
+                    ]
+                },
+                {
+                    cardtype: 'order',
+                    columns: [
+                        {
+                            num: '#21',
+                            tag: 'Излив на рельефа',
+                            tagMod: 'green',
+                        },
+                        {
+                            street: 'Улица Морская, 24',
+                            assigment: 'ЦТС'
+                        },
+                        {
+                            interconnected: true,
+                            drop: true,
+                            comments: true
+                        }
+                    ]
+                },
+                {
+                    cardtype: 'order',
+                    columns: [
+                        {
+                            num: '#20',
+                            tag: 'Повреждение асфальта',
+                            tagMod: 'purple',
+                        },
+                        {
+                            street: 'Улица Героев, 1',
+                            assigment: 'Дизайнерский цех'
+                        },
+                        {
+                            interconnected: true,
+                            drop: true,
+                            comments: true
+                        }
+                    ]
+                },
+                {
+                    cardtype: 'order',
+                    columns: [
+                        {
+                            num: '#19',
+                            tag: 'Подключение / Отключение',
+                            tagMod: 'green',
+                        },
+                        {
+                            street: 'Улица Некрасова, 19',
+                            assigment: 'Дизайнерский цех'
+                        },
+                        {
+                            interconnected: true,
+                            drop: true,
+                            comments: true
+                        }
+                    ]
+                },
+                {
+                    cardtype: 'order',
+                    columns: [
+                        {
+                            num: '#18',
+                            tag: 'Вызов представителя',
+                        },
+                        {
+                            street: 'Улица Героев, 1',
+                            assigment: 'Дизайнерский цех'
+                        },
+                        {
+                            interconnected: true,
+                            drop: true,
+                            comments: true
+                        }
+                    ]
+                }
+                ],
+        }
+    +table(table2)
+
+    -
+        const table3 = {
+            mod: 'in-progress',
+            header: [
+                {
+                    name: 'В работе',
+                    count: '( 6 )',         
+                }
+                ],
+            rows: [
+                {
+                    cardtype: 'order',
+                    columns: [
+                        {
+                            num: '#22',
+                            tag: 'Течь на земле',
+                            tagMod: 'blue',
+                        },
+                        {
+                            street: 'Улица Пушкина, 12',
+                            assigment: 'ЦТС',
+                        },
+                        {
+                            task: true,
+                            interconnected: true,
+                            drop: true,
+                            comments: true
+                        }
+                    ]
+                },
+                {
+                    cardtype: 'order',
+                    columns: [
+                        {
+                            num: '#21',
+                            tag: 'Излив на рельефа',
+                            tagMod: 'green',
+                        },
+                        {
+                            street: 'Улица Морская, 24',
+                            assigment: 'ЦТС'
+                        },
+                        {
+                            task: true,
+                            interconnected: true,
+                            drop: true,
+                            comments: true
+                        }
+                    ]
+                },
+                {
+                    cardtype: 'order',
+                    columns: [
+                        {
+                            num: '#20',
+                            tag: 'Повреждение асфальта',
+                            tagMod: 'purple',
+                        },
+                        {
+                            street: 'Улица Героев, 1',
+                            assigment: 'Дизайнерский цех'
+                        },
+                        {
+                            task: true,
+                            interconnected: true,
+                            drop: true,
+                            comments: true
+                        }
+                    ]
+                },
+                {
+                    cardtype: 'order',
+                    columns: [
+                        {
+                            num: '#19',
+                            tag: 'Подключение / Отключение',
+                            tagMod: 'green',
+                        },
+                        {
+                            street: 'Улица Некрасова, 19',
+                            assigment: 'Дизайнерский цех'
+                        },
+                        {
+                            task: true,
+                            interconnected: true,
+                            drop: true,
+                            comments: true
+                        }
+                    ]
+                },
+                {
+                    cardtype: 'order',
+                    columns: [
+                        {
+                            num: '#18',
+                            tag: 'Вызов представителя',
+                        },
+                        {
+                            street: 'Улица Героев, 1',
+                            assigment: 'Дизайнерский цех'
+                        },
+                        {
+                            task: true,
+                            interconnected: true,
+                            drop: true,
+                            comments: true
+                        }
+                    ]
+                }
+                ],
+        }
+    +table(table3)
+
+    -
+        const table4 = {
+            mod: 'postponed',
+            header: [
+                {
+                    name: 'Отложены',
+                    count: '( 18 )',
+                }
+                ],
+            rows: [
+                {
+                    cardtype: 'order',
+                    columns: [
+                        {
+                            num: '#22',
+                            tag: 'Течь на земле',
+                            tagMod: 'blue',
+                        },
+                        {
+                            street: 'Улица Пушкина, 12',
+                            assigment: 'ЦТС',
+                        },
+                        {
+                            task: true,
+                            interconnected: true,
+                            drop: true,
+                            comments: true
+                        }
+                    ]
+                },
+                {
+                    cardtype: 'order',
+                    columns: [
+                        {
+                            num: '#21',
+                            tag: 'Излив на рельефа',
+                            tagMod: 'green',
+                        },
+                        {
+                            street: 'Улица Морская, 24',
+                            assigment: 'ЦТС'
+                        },
+                        {
+                            task: true,
+                            interconnected: true,
+                            drop: true,
+                            comments: true
+                        }
+                    ]
+                },
+                {
+                    cardtype: 'order',
+                    columns: [
+                        {
+                            num: '#20',
+                            tag: 'Повреждение асфальта',
+                            tagMod: 'purple',
+                        },
+                        {
+                            street: 'Улица Героев, 1',
+                            assigment: 'Дизайнерский цех'
+                        },
+                        {
+                            task: true,
+                            interconnected: true,
+                            drop: true,
+                            comments: true
+                        }
+                    ]
+                },
+                {
+                    cardtype: 'order',
+                    columns: [
+                        {
+                            num: '#19',
+                            tag: 'Подключение / Отключение',
+                            tagMod: 'green',
+                        },
+                        {
+                            street: 'Улица Некрасова, 19',
+                            assigment: 'Дизайнерский цех'
+                        },
+                        {
+                            task: true,
+                            interconnected: true,
+                            drop: true,
+                            comments: true
+                        }
+                    ]
+                },
+                {
+                    cardtype: 'order',
+                    columns: [
+                        {
+                            num: '#18',
+                            tag: 'Вызов представителя',
+                        },
+                        {
+                            street: 'Улица Героев, 1',
+                            assigment: 'Дизайнерский цех'
+                        },
+                        {
+                            task: true,
+                            interconnected: true,
+                            drop: true,
+                            comments: true
+                        }
+                    ]
+                }
+                ],
+        }
+    +table(table4)

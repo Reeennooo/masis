@@ -1,0 +1,8 @@
+mixin toggler(data)
+  input(
+    type="checkbox" 
+    class="custom-toggler" 
+    name=data.name 
+    id=data.id 
+    checked=data.checked)&attributes(attributes)
+  label(for=data.id)

@@ -1,0 +1,46 @@
+mixin tooltip-bind()
+  -
+    const data = [
+      {
+      id: '#72',
+      street: 'улица Одесская, 2',
+      time: '15 мин назад'
+    },
+    {
+      id: '#71',
+      street: 'улица Курильская, 3',
+      time: '30 мин назад'
+    },
+    {
+      id: '#70',
+      street: 'улица Володина, 5',
+      time: '1 час назад'
+    },
+    {
+      id: '#69',
+      street: 'улица Искровая, 14',
+      time: 'Сегодня, 11:45'
+    },
+    {
+      id: '#68',
+      street: 'улица ул. Депо, 14',
+      time: 'Вчера, 19:43'
+    },
+    {
+      id: '#67',
+      street: 'улица ул. Морская, 18',
+      time: '15 марта, 20:31'
+    }
+    ]
+
+  +tooltip({
+    search: {placeholder: '| Выберите заявку или найдите по адресу / номеру'}, 
+    mode: 'list'
+  }).tooltip-bind
+    .tooltip__main
+      .tooltip-bind__list
+        each el in data
+          .tooltip-bind__item.tooltip__list-el
+            span.tooltip-bind__item--tag=el.id
+            span.tooltip-bind__item--street=el.street
+            span.tooltip-bind__item--time=el.time

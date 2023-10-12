@@ -1,0 +1,11 @@
+mixin button-deffer()
+  button.button-deffer
+    svg
+      use(xlink:href='img/sprite.svg#pausecircle')
+    | Отложить
+    .button-deffer__tooltip
+      span Отложить заявку
+      .button-deffer__choose-date
+        | Выберите дату
+        svg.svg
+          use(xlink:href='img/sprite.svg#calendar')

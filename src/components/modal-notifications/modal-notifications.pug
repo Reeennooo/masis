@@ -1,0 +1,64 @@
+//- Если уведомлений нет, то добавляем к .modal-notifications class .no-notification
+//- и внутрь .modal-info помещаем блок .modal-notifications__no
+
+mixin modal-notifications()
+  +modal().modal-notifications
+    .modal-header.container
+      span.modal-title Уведомления
+      span.modal-notifications__archive Архив
+    .modal-line.container
+      +btn('Свернуть', '', 'arrow-double', 'mode-text').modal-close(data-modal-close)
+      +btn('Архивировать всё', '', 'trash', 'mode-text')
+    .modal-info.container
+      //- .modal-notifications__no Нет новых уведомлений
+      .notification.is-new
+        .notification__data
+          span.notification-when
+            span.notification-when__day 05.06.23&nbsp;
+            | в&nbsp;
+            span.notification-when__time 16:32
+        span.notification__action Обращение <a href='#'>#16</a> выполнено
+
+      .notification.is-new
+        .notification__data
+          span.notification__who Семён Вишневский&nbsp;
+          span.notification-when
+            span.notification-when__day 05.06.23&nbsp;
+            | в&nbsp;
+            span.notification-when__time 16:32
+        span.notification__action Создал обращение <a href='#'>#22</a>
+
+      .notification.is-new
+        .notification__data
+          span.notification__who Семён Вишневский&nbsp;
+          span.notification-when
+            span.notification-when__day 05.06.23&nbsp;
+            | в&nbsp;
+            span.notification-when__time 16:32
+        span.notification__action Привязал обращения <a href='#'>#22</a>, <a href='#'>#21</a>, <a href='#'>#20</a> к заявке #72
+
+      .notification
+        .notification__data
+          span.notification__who Семён Вишневский&nbsp;
+          span.notification-when
+            span.notification-when__day 05.06.23&nbsp;
+            | в&nbsp;
+            span.notification-when__time 16:32
+        span.notification__action Создано обращение <a href='#'>#22</a>
+    
+      .notification
+        .notification__data
+          span.notification__who Семён Вишневский&nbsp;
+          span.notification-when
+            span.notification-when__day 05.06.23&nbsp;
+            | в&nbsp;
+            span.notification-when__time 16:32
+        span.notification__action Напсиал в заявке <a href='#'>#16</a>
+        .notification__content
+          p
+            span.notification__mark-person @Артур Сааков&nbsp;
+            | срочно нужно прыгнуть с парашютом в центр Геленджикской бухты для устранения неполадок. С собой должно быть все необходимое оборудование
+          .notification__images
+            img(src='img/notif1.png' alt='notif-img')
+            img(src='img/notif2.png' alt='notif-img')
+            img(src='img/notif3.png' alt='notif-img')

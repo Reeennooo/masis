@@ -1,0 +1,298 @@
+#yandex-map {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+
+  .ymaps-2-1-79-inner-panes {
+    border-radius: 24px;
+  }
+
+  .ymaps-2-1-79-map {
+    background-color: transparent;
+    border-radius: 24px;
+  }
+}
+
+// ZOOM
+#yandex-map,
+.modal-location {
+  .ymaps-2-1-79-zoom {
+    flex-direction: column;
+    width: 48px;
+    height: 96px !important;
+    padding: 0;
+  }
+
+  .ymaps-2-1-79-zoom__button {
+    position: relative !important;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $extra-light-blue;
+  }
+
+  .ymaps-2-1-79-float-button-icon {
+    display: none;
+  }
+  .ymaps-2-1-79-zoom__minus {
+    border-radius: 0 0 12px 12px;
+    &::before {
+      content: url('../img/icons/minus.svg');
+    }
+  }
+  .ymaps-2-1-79-zoom__plus {
+    border-radius: 12px 12px 0 0;
+    &::before {
+      content: url('../img/icons/plus.svg');
+    }
+  }
+}
+#yandex-map {
+  .ymaps-2-1-79-zoom {
+    display: flex;
+  }
+}
+
+// Ballon
+.ballon-title {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+@media (max-width: $mobile-big) {
+  .map {
+    padding-top: 32px;
+    padding-bottom: 60px;
+
+    .container {
+      padding: 0;
+    }
+  }
+}
+
+.hint {
+  display: inline-block;
+  min-width: 203px;
+  width: auto;
+  height: auto;
+  background-color: $white;
+  border-radius: 24px;
+  border: 1px solid $extra-light-blue;
+  padding: 23px;
+  // white-space: nowrap;
+  position: relative;
+  // left: -50%;
+
+  &__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    column-gap: 8px;
+  }
+
+  &__number {
+    flex-basis: 41px;
+    flex-shrink: 0;
+    height: 22px;
+    border-radius: 6px;
+    background-color: $background-grey;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    padding: 4px 8px;
+  }
+
+  &__problem {
+    // min-width: 90px;
+    // max-width: 200px;
+    white-space: nowrap;
+    border-radius: 6px;
+    background-color: $blue-100;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    padding: 4px 8px;
+  }
+
+  &__address {
+    display: block;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    margin: 12px 0;
+  }
+
+  &__phone {
+    display: block;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+  }
+}
+
+.map-filter {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  width: 149px;
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid $extra-light-blue;
+  background-color: $white;
+  z-index: 1;
+
+  button {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    @include transition('color');
+
+    &.is-active {
+      color: $blue-light;
+      svg {
+        stroke: $blue-light;
+      }
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        color: $blue-light;
+        svg {
+          stroke: $blue-light;
+        }
+      }
+    }
+  }
+
+  button:not(:last-child) {
+    border-right: 1px solid $extra-light-blue;
+  }
+  svg {
+    @include transition('stroke');
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: $grey-light;
+  }
+}
+
+// СТИЛИЗАЦИЯ КЛАСТЕРА
+.cluster {
+  position: absolute;
+  top: 36%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $grey-light;
+  border-radius: 100%;
+
+  // font
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 36px;
+  color: $white;
+}
+
+// СТИЛИЗАЦИЯ ИНСТРУМЕНТА СЛОИ
+.ymaps-2-1-79-listbox {
+  width: 48px !important;
+  height: 48px !important;
+
+  &__list {
+    max-height: none !important;
+  }
+  .ymaps-2-1-79-listbox__button {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    border: 1px solid $extra-light-blue;
+  }
+
+  .ymaps-2-1-79-listbox__button-text {
+    display: none;
+  }
+  .ymaps-2-1-79-listbox__button-arrow {
+    display: none !important;
+  }
+
+  .ymaps-2-1-79-listbox__button-icon.ymaps-2-1-79-_icon_layers {
+    width: 24px;
+    height: 24px;
+    border: none;
+    // margin: 0;
+    // padding: 0;
+    background-image: url('../img/map/layers.svg');
+  }
+
+  // Выпадающий список
+  .ymaps-2-1-79-listbox__panel {
+    float: left !important;
+    padding: 24px;
+    padding-bottom: 8px;
+    border-radius: 16px;
+    margin-top: 12px;
+  }
+
+  .ymaps-2-1-79-listbox__list-item {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    height: 24px;
+    margin-bottom: 16px;
+
+    &:hover {
+      background-color: transparent;
+      color: #468fc5;
+    }
+  }
+
+  .ymaps-2-1-79-listbox__list-item-text {
+    padding: 0;
+    padding-right: 32px;
+    color: $text-color;
+    // width: 100%;
+    max-width: none;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    @include transition('color');
+  }
+
+  .ymaps-2-1-79-listbox__list-item_selected_yes .ymaps-2-1-79-listbox__list-item-text {
+    color: $blue-light;
+    &:before {
+      width: 24px;
+      height: 24px;
+      background: url('../img/icons/tickcircle.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      top: -1px;
+      right: 0;
+      left: auto;
+    }
+  }
+}

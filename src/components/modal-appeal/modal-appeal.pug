@@ -1,0 +1,75 @@
+-
+  const applicationInfo = [
+    {
+      icon: 'callcalling',
+      name: 'Откуда поступило',
+      value: `<p class='modal-info__value-txt'>Звонок</p>`,
+      mode: 'small-margin',
+    },
+    {
+      icon: 'profile',
+      name: 'Кто обратился',
+      value: `<p class='modal-info__value-txt'>Вишневский Семён Владимирович</p><p class='modal-info__value-txt'>+7 (999) 123-45-67</p><p class='modal-info__value-txt'>Физическое лицо</p>`,
+      mode: 'small-margin',
+    },
+    {
+      icon: 'link',
+      name: 'Взаимосвязь',
+      value: `<p class='modal-info__value-txt modal-info__value--connection'>#<span>72</span>, улица Одесская, 2</p>`,
+    },
+    {
+      icon: 'infocircle',
+      name: 'В чем проблема',
+      value: `<p class='modal-info__value-txt'>Течь на земле</p><p>Для предотвращения загрязнения водопроводной воды следует контролировать техническое обслуживание водопровода, периодически менять фильтры и краны. Также, необходимо избегать залива газонов и садов химическими удобрениями, не опресненной водой.</p>`,
+    },
+    {
+      id: 'map-id2312',
+      icon: 'location',
+      name: 'Где проблема',
+      value: `<p class='modal-info__value-txt'>улица Волнухина, 6<span class='modal-additional'>Микрорайон Магилат, Геленджик, Краснодарский край</span></p>`,
+      mode: 'map',
+    },
+    {
+      icon: 'clock',
+      name: 'История',
+      value: `<p class='modal-info__value-txt'>Обращение создано<span class='modal-additional'>Семён Вишневский 05.06.23 в 16:32</span></p>`,
+      mode: 'border',
+      class: 'modal-info__item-history'
+    },
+  ]
+
+mixin modal-appeal()
+  +modal().modal-appeal
+    .left-side
+      .modal-header.container
+        span.modal-title Обращение #42
+        .appeal-status.appeal-status--new Новое
+        +view-toggler({name: 'view-toggler1'}).modal-view-toggler
+      .modal-line.container
+        +btn('Свернуть', '', 'arrow-double', 'mode-text').modal-close(data-modal-close)
+        a(href="custom-link").modal-share
+          img(src="img/icons/link2.svg", alt="share")
+          span Поделиться
+          .modal-share__tooltip
+            span Ссылка скопирована
+      .modal-info.container
+        each item in applicationInfo
+          .modal-info__item(class=`${item.class ? item.class : ''} ${item.mode ? `modal-info__item--${item.mode}` : ''}`)
+            .modal-info__name
+              svg(width='24' height='24')
+                use(xlink:href=`img/sprite.svg#${item.icon}`)
+              span!=item.name
+            .modal-info__value!=item.value
+
+            if(item.id) 
+              .modal-location
+                .modal-location__map(id=item.id)
+                +btn('', '', 'arrow-double-up', 'mode-icon').map-resize-btn
+                
+        .modal-appeal__btn-wp
+          +btn('Отменить', '', 'close', 'mode-shadow').cancel
+    .right-side
+
+
+      
+

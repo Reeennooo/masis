@@ -1,0 +1,30 @@
+.button-bind {
+  cursor: pointer;
+  position: relative;
+  margin: 0;
+  background-color: transparent;
+  display: inline-flex;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px dashed $blue-light;
+  background-color: $white;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.067px;
+  height: 24px;
+  @include transition('background');
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: $blue-light;
+      .button-bind__txt {
+        color: $white;
+      }
+    }
+  }
+
+  &__txt {
+    pointer-events: none;
+    color: $blue-light;
+  }
+}

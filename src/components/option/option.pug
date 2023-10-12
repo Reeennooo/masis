@@ -1,0 +1,4 @@
+mixin option(name, value, txt, isChecked)
+  label(for=value).option&attributes(attributes)
+    input(type='radio' name=name id=value value=value checked=isChecked)
+    span=txt

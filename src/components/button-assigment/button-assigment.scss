@@ -1,0 +1,26 @@
+.button-assigment {
+  position: relative;
+  display: inline-flex;
+  outline: none;
+  background-color: transparent;
+
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px dashed $blue-light;
+  transition: 200ms ease all;
+
+  &__txt {
+    color: $blue-light;
+  }
+
+  &:hover {
+    background: $blue-light;
+    .button-assigment__txt {
+      color: $white;
+    }
+  }
+
+  span {
+    pointer-events: none;
+  }
+}

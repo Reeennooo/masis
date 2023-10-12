@@ -1,0 +1,7 @@
+mixin modal-footer()
+  .modal-footer
+    +btn('', '', 'arrow-down', 'mode-icon')(data-modal-close="data-modal-close").modal-footer__close
+    +btn('Взять в работу').modal-footer__action
+    +btn('', '', 'comments', 'mode-icon')(data-open-tooltip='tooltip-comments').modal-footer__chat
+      .modal-footer__counter-comments 3
+    

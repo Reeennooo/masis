@@ -1,0 +1,42 @@
+mixin additional-option(data)
+  .additional-option-wrapper(class=!data.toggler ? 'always-open' : '')
+    .additional-option&attributes(attributes)
+      .additional-option__icon
+        svg.svg
+          use(xlink:href=`img/sprite.svg#${data.icon}`)
+      .additional-option__name
+        span=data.name
+        if (data.innerItems)
+          span.additional-option__quantity
+            | (&nbsp;
+            =data.innerItems.length
+            | &nbsp;)
+      .additional-option__buttons
+        button(type='button').additional-option__add(data-open-tooltip=data.openTooltip) 
+          svg
+            use(xlink:href='img/sprite.svg#plus')
+        if(data.toggler)
+          svg.svg.additional-option__toggle
+            use(xlink:href='img/sprite.svg#arrow-double-up')
+      if block
+        block
+    if (data.innerItems)
+      .additional-options-list
+        .additional-options-list__inner
+          each item in data.innerItems
+            +added-item({
+              number: item.number, 
+              name: item.name, 
+              addinfo: item.addinfo, 
+              status: item.status, 
+              state: item.state,
+              time: item.time, 
+              type: item.type,
+              active: item.active,
+              edit: item.edit,
+              delete: item.delete,
+              checkbox: item.checkbox,
+              mode: item.mode,
+              loss: item.loss
+              })
+          

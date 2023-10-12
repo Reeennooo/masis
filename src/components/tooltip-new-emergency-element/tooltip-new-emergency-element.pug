@@ -1,0 +1,33 @@
+mixin tooltip-new-emergency-element()
+  +tooltip({title: 'Новый аварийный элемент', button: {txt: 'Добавить'}}).new-emergency-element
+    .tooltip__main
+      //- .tooltip__map#map-09876
+      .modal-location.new-emergency-element__map.is-open
+        .modal-location__map#map-09876
+        +btn('', '', 'arrow-double-up', 'mode-icon').map-resize-btn
+      .tooltip__item
+        .tooltip__name Сеть
+        .tooltip__value
+          +select({inputName: 'network-type', inputSearch: false, placeholder: 'Выберите сеть'}).i-select--city
+            +selectListItem("<div class='list-item'><span class='list-item__txt'>Пиратская сеть</span></div>", 'Пиратская сеть')
+            +selectListItem("<div class='list-item'><span class='list-item__txt'>Сеть магазинов</span></div>", 'Сеть магазинов')
+            +selectListItem("<div class='list-item'><span class='list-item__txt'>Интернет сеть</span></div>", 'Интернет сеть')
+      .tooltip__item
+        .tooltip__name Тип элемента
+        .tooltip__value
+          +select({inputName: 'network-type', inputSearch: false, placeholder: 'Выберите тип'}).i-select--city
+            +selectListItem("<div class='list-item'><span class='list-item__txt'>Тип 1</span></div>", 'Тип 1')
+            +selectListItem("<div class='list-item'><span class='list-item__txt'>Тип 2</span></div>", 'Тип 2')
+            +selectListItem("<div class='list-item'><span class='list-item__txt'>Тип 3</span></div>", 'Тип 3')
+      .tooltip__item
+        .tooltip__name Материал
+        .tooltip__value
+          +input('material', 'text', 'Укажите материал')
+      .tooltip__item
+        .tooltip__name Длина
+        .tooltip__value
+          +input('long', 'text', 'Укажите длину')
+      .tooltip__item
+        .tooltip__name Диаметр
+        .tooltip__value
+          +input('diametr', 'text', 'Укажите диаметр')

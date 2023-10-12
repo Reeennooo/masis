@@ -1,0 +1,17 @@
+mixin tooltip-small-mechanization()
+  +tooltip({
+    title: 'Новое средство малой механизации',
+    button: {txt: 'Добавить'}
+    }).tooltip-small-mechanization
+    .tooltip__main
+      .tooltip__item
+        .tooltip__name СММ
+        .tooltip__value
+          +select({inputName: 'network-type', inputSearch: false, placeholder: 'Выберите СММ'}).i-select--city
+            +selectListItem("<div class='list-item'><span class='list-item__txt'>Болгарка</span></div>", 'Болгарка')
+            +selectListItem("<div class='list-item'><span class='list-item__txt'>Бензопила</span></div>", 'Бензопила')
+            +selectListItem("<div class='list-item'><span class='list-item__txt'>Напильник</span></div>", 'Напильник')
+      .tooltip__item
+        .tooltip__name Время работы, часы
+        .tooltip__value
+          +input('material', 'text', 'Укажите время работы')

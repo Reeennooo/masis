@@ -1,0 +1,42 @@
+.option {
+  
+  span {
+    display: inline-block;
+    cursor: pointer;
+    width: inherit;
+    height: inherit;
+    padding: 4px 12px;
+    border-radius: 8px;
+    // font
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    background-color: $background-grey;
+  }
+
+  &:hover {
+    span {
+      background-color: $extra-light-blue;
+    }
+  }
+
+  input:checked ~ span {
+    background-color: $blue-light;
+    color: $white;
+  }
+
+  // svg {
+  //   width: 24px;
+  //   height: 24px;
+  //   fill: none;
+  //   stroke: $grey-light;
+  //   @include transition('stroke');
+  // }
+
+  input {
+    display: none;
+    z-index: -1;
+    opacity: 0;
+  }
+}

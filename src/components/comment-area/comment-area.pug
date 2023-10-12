@@ -1,0 +1,37 @@
+mixin comment-area(data = {})
+  .comment-area
+    .comment-area__content(contenteditable="true" data-placeholder='Напишите сообщение')!=data.txt
+    .comment-area__buttons
+      button(type='button' data-open-select).comment-area__button.mark-person
+        svg 
+          use(xlink:href='img/sprite.svg#call-people')
+      button(type='button').comment-area__button
+        svg 
+          use(xlink:href='img/sprite.svg#attach-file')
+      button(type='button').comment-area__button.comment-area__button--send
+        svg 
+          use(xlink:href='img/sprite.svg#send')
+    +select({inputName: 'comment-mark-person', inputSearch: true, placeholder: 'Введите имя того кого хотите упомянуть'}).comment-area__select
+      +selectListItem("<div class='list-item'><span class='list-item__txt'>Ксения Соболева</span><span class='list-item__additional-info'>Диспетчер</span></div>", '@ksusha')
+      +selectListItem("<div class='list-item'><span class='list-item__txt'>Артур Сааков</span><span class='list-item__additional-info'>Бригадир</span></div>", '@arturBrigada')
+      +selectListItem("<div class='list-item'><span class='list-item__txt'>Дарина Капишникова</span><span class='list-item__additional-info'>Диспетчер</span></div>", '@darinaSpetch')
+      +selectListItem("<div class='list-item'><span class='list-item__txt'>Ольга Павлова</span><span class='list-item__additional-info'>Диспетчер</span></div>", '@olgaPavlovaDispatch')
+      +selectListItem("<div class='list-item'><span class='list-item__txt'>Михаил Перловский</span><span class='list-item__additional-info'>ЦТВ</span></div>", '@Perlovka')
+    if(data.images)
+      .comment-area__images
+        .comment-area__img
+          img(src="img/notif1.png", alt="comment-image")
+          .comment-area__img-delete
+            svg
+              use(xlink:href='img/sprite.svg#close')
+        .comment-area__img
+          img(src="img/notif2.png", alt="comment-image")
+          .comment-area__img-delete
+            svg
+              use(xlink:href='img/sprite.svg#close')
+        .comment-area__img
+          img(src="img/notif3.png", alt="comment-image")
+          .comment-area__img-delete
+            svg
+              use(xlink:href='img/sprite.svg#close')
+      

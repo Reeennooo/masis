@@ -1,0 +1,99 @@
+.textarea-wrapper {
+  position: relative;
+
+  &:has(textarea:focus) {
+    box-shadow: 0px 0px 50px 25px rgba(105, 132, 230, 0.16);
+  }
+
+  &.error {
+    textarea::placeholder {
+      color: $pink2;
+    }
+  }
+
+  textarea {
+    box-shadow: 0px 0px 0px 15px rgb(255, 255, 255);
+    overflow: auto;
+    border: none;
+    border-radius: 8px;
+    background-color: $white;
+    padding: 0px 0;
+    height: 24px;
+    // max-height: 72px;
+    width: 100%;
+    resize: none;
+    caret-color: $blue-light;
+
+    &::placeholder {
+      color: $input-color;
+    }
+
+    // font
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    font-family: $default-font;
+
+    @include scrollbar();
+  }
+
+  &--comment {
+    textarea {
+      padding-right: 100px;
+    }
+  }
+}
+
+.commment__buttons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  column-gap: 8px;
+}
+
+.textarea-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: $grey-light;
+  }
+
+  &--send {
+    svg {
+      width: 100%;
+      height: 100%;
+      fill: $blue-light;
+      stroke: $blue-light;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        svg {
+          fill: $blue;
+          stroke: $blue;
+        }
+      }
+    }
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      svg {
+        stroke: $blue-light;
+      }
+    }
+  }
+}

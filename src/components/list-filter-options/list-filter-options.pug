@@ -1,0 +1,34 @@
+mixin list-filter-options()
+  .list-filter-options&attributes(attributes)
+    .list-filter-options__title
+      span Фильтры
+      span.list-filter-options__clear-filter Сбросить все
+    .list-filter-options__filters
+      .list-filter-options__item
+        .list-filter-options__name Откуда постпило
+        .list-filter-options__wp
+          +option("where", 'option-call', 'Звонок', true)
+          +option("where", 'option-website', 'Сайт')
+          +option("where", 'option-messenger', 'Мессенджер')
+      .list-filter-options__item
+        .list-filter-options__name Кто обратился
+        .list-filter-options__wp
+          +option("who", 'option-physic', 'Физическое лицо', true)
+          +option("who", 'option-UR', 'Юридическое лицо')
+          +option("who", 'option-ORSIS', 'ОРСиС')
+          +option("who", 'option-VKH', 'ВКХ')
+          +option("who", 'option-IVR', 'ИВР')
+          +option("who", 'option-EDS', 'ЕДС')
+      .list-filter-options__item
+        .list-filter-options__name
+          span В чем проблема
+          +select({inputSearch: false, inputName: 'filter', placeholder: 'Выберите категорию'})
+            +selectListItem("<div class='list-item'><span class='list-item__txt'>Водоснабжение</span></div>", 'Водоснабжение')(data-categories=`[{"name": "problem-category", "txt": "Течь на земле", "id": "flowing-ground", "checked": true}, {"name": "problem-category", "txt": "Течь под землей", "id": "flowing-ground2"}, {"name": "problem-category", "txt": "Течь в колонке", "id": "flowing-ground3" }, {"name": "problem-category", "txt": "Подвоз воды", "id": "flowing-ground4" }, {"name": "problem-category", "txt": "Течь на рельфе", "id": "flowing-ground5" }]`)
+            +selectListItem("<div class='list-item'><span class='list-item__txt'>Водоотведение</span></div>", 'Водоотведение')(data-categories=`[{"name": "problem-category", "txt": "Течь на земле", "id": "flowing-ground", "checked": true}, {"name": "problem-category", "txt": "Течь под землей", "id": "flowing-ground2" }, {"name": "problem-category", "txt": "Течь в колонке", "id": "flowing-ground3" }, {"name": "problem-category", "txt": "Ааааааа, помогите", "id": "flowing-ground4" }, {"name": "problem-category", "txt": "Течь на рельфе", "id": "flowing-ground5" }]`)
+            +selectListItem("<div class='list-item'><span class='list-item__txt'>Благоустройство</span></div>", 'Благоустройство')(data-categories=`[{"name": "problem-category", "txt": "Течь на земле", "id": "flowing-ground", "checked": true}, {"name": "problem-category", "txt": "Течь под землей", "id": "flowing-ground2" }, {"name": "problem-category", "txt": "Течь в колонке", "id": "flowing-ground3" }, {"name": "problem-category", "txt": "Подвоз воды", "id": "flowing-ground4" }, {"name": "problem-category", "txt": "Течь на рельфе", "id": "flowing-ground5" }]`)
+        .list-filter-options__wp
+          +option("problem-option", 'problem1', 'Течь на земле', true)
+          +option("problem-option", 'problem2', 'Течь под землей')
+          +option("problem-option", 'problem3', 'Течь в колонке')
+          +option("problem-option", 'problem4', 'Подвоз воды')
+          +option("problem-option", 'problem5', 'Течь на рельефе')

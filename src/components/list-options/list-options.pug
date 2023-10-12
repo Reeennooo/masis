@@ -1,0 +1,10 @@
+mixin list-options(data)
+  .list-options&attributes(attributes)
+    if(data.filterFor)
+      .list-options__filter-for
+        .list-options__filter-for-el.is-active Заявки
+        .list-options__filter-for-el Обращения
+    each el in data.data
+      .list-options__el
+        span=el.name
+        +toggler({name: el.name, id: el.id})

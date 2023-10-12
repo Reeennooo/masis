@@ -1,0 +1,30 @@
+mixin comment(data = {})
+  if(data.mode === 'delete')
+    .comment
+      .comment__header
+        .comment__creator=data.creator
+        .comment__time 1 мин назад
+      .comment__txt.comment__txt--delete Сообщение удалено
+  else
+    .comment
+      .comment__header
+        .comment__creator=data.creator
+        .comment__time 1 мин назад
+        if(data.change)
+          .comment__change Изменено
+        if(data.editable)
+          .comment__actions
+            button(type='button').comment__edit
+              svg
+                use(xlink:href='img/sprite.svg#edit')
+            button(type='button').commnet__delete
+              svg
+                use(xlink:href='img/sprite.svg#trash')
+      .comment__txt!=data.txt
+      if(data.images)
+        .comment__images
+          img(src="img/notif1.png", alt="comment-image")
+          img(src="img/notif2.png", alt="comment-image")
+          img(src="img/notif3.png", alt="comment-image")
+      if(data.answer)
+        a(href='').comment__answer Ответить

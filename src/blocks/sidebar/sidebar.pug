@@ -1,0 +1,72 @@
+-
+  const navigations = [
+    {
+      icon: 'map-icon',
+      name: 'Карта',
+      active: true,
+      link: 'index.html',
+      id: 'index',
+    },
+    {
+      icon: 'callcalling',
+      name: 'Обращения',
+      active: false,
+      link: 'appeals.html',
+      id: 'appeals',
+    },
+    {
+      icon: 'applications',
+      name: 'Заявки',
+      active: false,
+      link: 'orders.html',
+      id: 'orders',
+    },
+    {
+      icon: 'task',
+      name: 'Задания',
+      active: false,
+      link: 'tasks.html',
+      id: 'tasks',
+    },
+    {
+      icon: 'diagram',
+      name: 'Статистика',
+      active: false,
+      link: '',
+      id: '',
+    },
+    {
+      icon: 'receiptedit',
+      name: 'Отчёты',
+      active: false,
+      link: '',
+      id: '',
+    },
+    {
+      icon: 'people',
+      name: 'Бригады',
+      active: false,
+      link: '',
+      id: '',
+    },
+  ]
+
+aside.sidebar
+  button.sidebar__toggle
+    svg
+      use(xlink:href='img/sprite.svg#arrow-double')
+  .sidebar__inner
+    .sidebar__top
+      a(href="index.html")
+        img(src="img/masis-logo.svg", alt="").sidebar__logo
+    .sidebar__profile
+      span Семён Вишневский
+    .sidebar__navigation
+      each item in navigations
+        a(href=item.link id=item.id).sidebar__navigation-el
+          svg
+            use(xlink:href=`img/sprite.svg#${item.icon}`)
+          span=item.name
+    +btn('Выйти', '', 'logout', 'mode-dark').sidebar__btn-logout
+
+

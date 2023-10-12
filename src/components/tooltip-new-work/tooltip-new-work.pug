@@ -1,0 +1,17 @@
+mixin tooltip-new-work()
+  +tooltip({
+    title: 'Новое задание', 
+    search: {placeholder: 'Выберите задание или введите название'}, 
+    mode: 'list'
+    }).tooltip-new-work
+    .tooltip__main
+      .tooltip__list-el
+        | Обследование
+      .tooltip__list-el
+        | Выемка грунта
+      .tooltip__list-el
+        | Сварочные работы
+      .tooltip__list-el
+        | Подвоз воды
+      .tooltip__list-el
+        | Задание с подковыркой

@@ -1,0 +1,93 @@
+mixin modal-create-application()
+  +modal().modal-create-application
+    .modal-header.container
+      span.modal-title Новая заявка
+    .modal-line.container
+      +btn('Свернуть', '', 'arrow-double', 'mode-text').modal-close(data-modal-close)
+      +btn('Удалить черновик', '', 'trash', 'mode-text')
+    form.modal-info.container
+
+      .modal-info__item
+        .modal-info__name
+          svg(width='24' height='24')
+            use(xlink:href='img/sprite.svg#flag')
+          span Основание
+        .modal-info__value
+          .modal-info__options-wrapper
+            +option('base', 'appeal', 'Обращение', true)
+            +option('base', 'planned-works', 'Плановые работы')
+            +option('base', 'PPR', 'ППР')
+
+      .modal-info__item.application-interconnected
+        .modal-info__name
+          svg(width='24' height='24')
+            use(xlink:href='img/sprite.svg#link')
+          span Взаимосвязаны
+        .modal-info__value
+          +select({inputName: 'interconnection', inputSearch: true, placeholder: 'Выберите обращения', selectedTxt: 'Мск'}).no-close.multiply-choice
+            +selectListItem("<div class='list-item'><span class='list-item__number'>#73</span><span class='list-item__txt'>улица Одесская, 2</span><span class='list-item__additional-info'>15 мин назад</span><label class='custom-checkbox'><input type='checkbox' name='connection' value='1'/><span></span></label></div>", '#73 улица Одесская, 2')
+            +selectListItem("<div class='list-item'><span class='list-item__number'>#73</span><span class='list-item__txt'>улица Курильская, 3</span><span class='list-item__additional-info'>30 мин назад</span><label class='custom-checkbox'><input type='checkbox' name='connection' value='1'/><span></span></label></div>", '#73 улица Курильская, 3')
+            +selectListItem("<div class='list-item'><span class='list-item__number'>#70</span><span class='list-item__txt'>улица Володина, 5</span><span class='list-item__additional-info'>1 час назад</span><label class='custom-checkbox'><input type='checkbox' name='connection' value='1'/><span></span></label></div>", '#70 улица Володина, 5')
+            +selectListItem("<div class='list-item'><span class='list-item__number'>#69</span><span class='list-item__txt'>улица Искровая, 14</span><span class='list-item__additional-info'>Сегодня, 11:45</span><label class='custom-checkbox'><input type='checkbox' name='connection' value='1'/><span></span></label></div>", '#71 улица Искровая, 14')
+            +selectListItem("<div class='list-item'><span class='list-item__number'>#68</span><span class='list-item__txt'>улица ул. Депо, 14</span><span class='list-item__additional-info'>Вчера, 19:43</span><label class='custom-checkbox'><input type='checkbox' name='connection' value='1'/><span></span></label></div>", '#68 улица ул. Депо, 14')
+            +selectListItem("<div class='list-item'><span class='list-item__number'>#67</span><span class='list-item__txt'>улица ул. Морская, 18</span><span class='list-item__additional-info'>15 марта, 20:31</span><label class='custom-checkbox'><input type='checkbox' name='connection' value='1'/><span></span></label></div>", '#67 улица ул. Морская, 18')
+          .result-interconnected
+      
+      .modal-info__item
+        .modal-info__name
+          svg(width='24' height='24')
+            use(xlink:href='img/sprite.svg#infocircle')
+          span В чем проблема
+        .modal-info__value
+          +select({inputName: 'what-problem', inputSearch: false, placeholder: 'Выберите категорию'}).i-select--create-appeal
+            +selectListItem("<div class='list-item'><span class='list-item__txt'>Водоснабжение</span><span class='list-item__additional-info'>Течи и подвоз воды</span></div>", 'Водоснабжение')(data-categories=`[{"name": "problem-category", "txt": "Течь на земле", "id": "flowing-ground", "checked": true}, {"name": "problem-category", "txt": "Течь под землей", "id": "flowing-ground2"}, {"name": "problem-category", "txt": "Течь в колонке", "id": "flowing-ground3" }, {"name": "problem-category", "txt": "Подвоз воды", "id": "flowing-ground4" }, {"name": "problem-category", "txt": "Течь на рельфе", "id": "flowing-ground5" }]`)
+            +selectListItem("<div class='list-item'><span class='list-item__txt'>Водоотведение</span><span class='list-item__additional-info'>Засор, излив, подпор и запах</span></div>", 'Водоотведение')(data-categories=`[{"name": "problem-category", "txt": "Течь на земле", "id": "flowing-ground", "checked": true}, {"name": "problem-category", "txt": "Течь под землей", "id": "flowing-ground2" }, {"name": "problem-category", "txt": "Течь в колонке", "id": "flowing-ground3" }, {"name": "problem-category", "txt": "Ааааааа, помогите", "id": "flowing-ground4" }, {"name": "problem-category", "txt": "Течь на рельфе", "id": "flowing-ground5" }]`)
+            +selectListItem("<div class='list-item'><span class='list-item__txt'>Благоустройство</span><span class='list-item__additional-info'>Провал и различные повреждения</span></div>", 'Благоустройство')(data-categories=`[{"name": "problem-category", "txt": "Течь на земле", "id": "flowing-ground", "checked": true}, {"name": "problem-category", "txt": "Течь под землей", "id": "flowing-ground2" }, {"name": "problem-category", "txt": "Течь в колонке", "id": "flowing-ground3" }, {"name": "problem-category", "txt": "Подвоз воды", "id": "flowing-ground4" }, {"name": "problem-category", "txt": "Течь на рельфе", "id": "flowing-ground5" }]`)
+          .modal-info__options-wrapper.modal-info__options-wrapper--margin.hidden
+          +textarea("problem-description", 'Опишите проблему подробнее').modal-create-application__textarea
+
+      .modal-info__item.modal-info__item--map
+        .modal-info__name
+          svg(width='24' height='24')
+            use(xlink:href='img/sprite.svg#location')
+          span Где находится
+        .modal-info__value
+          +select({inputName: 'where-is', inputSearch: true, placeholder: 'Выберите адрес'}).address
+            +selectListItem("<div class='list-item list-item--address'><span class='list-item__txt'>улица Волнухина</span><span class='list-item__additional-info'>микрорайон Магилат, Геленджик, Краснодарский край</span></div>", 'улица Волнухина')
+            +selectListItem("<div class='list-item list-item--address'><span class='list-item__txt'>3-переулок Волнухина</span><span class='list-item__additional-info'>микрорайон Магилат, Геленджик, Краснодарский край</span></div>", '3-переулок Волнухина')
+            +selectListItem("<div class='list-item list-item--address'><span class='list-item__txt'>1-й переулок Волнухина</span><span class='list-item__additional-info'>микрорайон Магилат, Геленджик, Краснодарский край</span></div>", '1-й переулок Волнухина')
+            +selectListItem("<div class='list-item list-item--address'><span class='list-item__txt'>Вольный проезд</span><span class='list-item__additional-info'>Геленджик, Краснодарский край</span></div>", 'Вольный проезд')
+            +selectListItem("<div class='list-item list-item--address'><span class='list-item__txt'>улица Волнухина, 10</span><span class='list-item__additional-info'>микрорайон Магилат, Геленджик, Краснодарский край</span></div>", 'улица Волнухина, 10')
+        .modal-location
+          .modal-location__map#map-id0535611
+          +btn('', '', 'arrow-double-up', 'mode-icon')(type='button').map-resize-btn
+
+      .modal-info__item.modal-info__item--border
+        .modal-info__name
+          svg(width='24' height='24')
+            use(xlink:href='img/sprite.svg#profilecircle')
+          span Исполнитель
+        .modal-info__value
+          +select({inputName: 'executor', inputSearch: false, placeholder: 'Выберите подразделение', clear: true}).i-select--city
+            +selectListItem("<div class='list-item'><span class='list-item__txt'>ЦТВ</span></div>", 'ЦТВ')
+            +selectListItem("<div class='list-item'><span class='list-item__txt'>ЦТС</span></div>", 'ЦТС')
+            +selectListItem("<div class='list-item'><span class='list-item__txt'>ЦВКХ</span></div>", 'ЦВКХ')
+            +selectListItem("<div class='list-item'><span class='list-item__txt'>Дизайнерский цех</span></div>", 'Дизайнерский цех')
+
+
+      .modal-info__item
+        .modal-info__name
+          svg(width='24' height='24')
+            use(xlink:href='img/sprite.svg#comment')
+          span Комментарии
+        .modal-info__value
+          .modal-create-application__comments
+            +comment({mode: 'delete', images: true, creator: 'Семён Вишневский'})
+            +comment({txt: '<span>@Артур Сааков</span> срочно нужно прыгнуть с парашютом в центр Геленджикской бухты для устранения неполадок. С собой должно быть все необходимое оборудование', creator: 'Семён Вишневский', editable: true, change: true})
+            +comment-area({images: true, txt: "<span class='comment-area__mark'>@Артур Сааков&nbsp;</span> срочно нужно прыгнуть с парашютом в центр Геленджикской бухты для устранения неполадок. С собой должно быть все необходимое оборудование"})
+            //- +textarea("comments", 'Напишите сообщение', 'comment')
+
+      .modal-btn-wp
+          +btn('Создать', '', '', 'mode-shadow')
+
+    

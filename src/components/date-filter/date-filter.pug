@@ -1,0 +1,5 @@
+mixin date-filter()
+  +btn("Сначала новые", "", "lines", "mode-text")(data-value='new').date-filter.date-filter--new
+    ul.date-filter__list
+      li.date-filter__item(data-item-value='new').date-filter__item--new Сначала новые
+      li.date-filter__item(data-item-value='old') Сначала старые

@@ -1,0 +1,223 @@
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.apple-fix {
+  width: 100%;
+  position: fixed;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.clearfix {
+  &::after {
+    content: '.';
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+  }
+}
+
+// .wrapper {
+//   display: flex;
+//   // flex-direction: column;
+//   min-height: 100vh;
+//   @include heightVH(100, min); //ios
+//   width: 100%;
+//   overflow-x: hidden;
+//   position: relative;
+//   &.sticky {
+//     overflow: unset;
+//   }
+//   .header {
+//     flex: 0 0 auto;
+//   }
+//   main {
+//     height: calc(100vh - 176px);
+//   }
+//   .footer {
+//     flex: 0 0 auto;
+//   }
+// }
+
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  padding-left: 240px;
+  // overflow-x: hidden;
+  @include transition('padding', 0.25s);
+
+  &.sidebar-collapsed {
+    padding-left: 0;
+  }
+
+  main {
+    padding-top: 36px;
+    padding-bottom: 36px;
+    flex: 1 0 auto;
+  }
+}
+
+// .table {
+//   display: table;
+//   width: 100%;
+//   border: 1px solid hsl(0, 0%, 70%);
+//   border-collapse: collapse;
+//   td,
+//   th {
+//     padding: 5px 10px;
+//     vertical-align: top;
+//     border-bottom: 1px solid hsl(0, 0%, 70%);
+//     &:not(:first-child) {
+//       border-left: 1px solid hsl(0, 0%, 70%);
+//     }
+//   }
+//   th {
+//     text-align: inherit;
+//   }
+// }
+.is-default-hidden {
+  display: none !important;
+}
+
+.page-layout {
+  // overflow: visible;
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.content-page {
+  padding-top: 36px;
+  padding-bottom: 36px;
+  height: inherit;
+}
+
+// options status
+.status-new {
+  .status,
+  .status-toggler {
+    background-color: $violet;
+  }
+}
+
+.status-in-work {
+  .status,
+  .status-toggler {
+    background-color: $blue-2;
+  }
+}
+
+.status-deffer {
+  .status,
+  .status-toggler {
+    background-color: $orange;
+  }
+}
+
+.status-canceled {
+  .status,
+  .status-toggler {
+    background-color: $grey-100;
+  }
+}
+
+.status-completed {
+  .status,
+  .status-toggler {
+    background-color: $green;
+  }
+}
+
+// options STATE
+.state-no-active {
+  .status,
+  .status-toggler {
+    background-color: $violet;
+  }
+}
+
+.state-active {
+  .status,
+  .status-toggler {
+    background-color: $blue-2;
+  }
+}
+
+.state-completed {
+  .status,
+  .status-toggler {
+    background-color: $green;
+  }
+}
+
+// ОШИБКА ДЛЯ iNPUT.
+.error {
+  color: $pink2 !important;
+}
+
+.next-status {
+  background-color: transparent;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 4px 12px 12px 4px;
+  border: 1px solid $extra-light-blue;
+  width: 56px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include transition('background-color');
+
+  svg {
+    fill: none;
+    stroke: $blue;
+    transform: rotate(-90deg);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: $extra-light-blue;
+    }
+  }
+}
+
+.modal-view-toggler {
+  position: absolute;
+  right: 96px;
+  top: 36px;
+}
+
+.svg {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  fill: none;
+  transition: 0.25s linear;
+  transition-property: color, stroke;
+}
+
+@media (max-width: $mobile-big) {
+  .wrapper {
+    padding-left: 0;
+
+    main {
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+}

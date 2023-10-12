@@ -1,0 +1,22 @@
+mixin tooltip(data)
+  .tooltip&attributes(attributes)(class=`${data.mode ? `tooltip--${data.mode}` : ''}`)
+    .tooltip__inner
+      if(data.title || data.search)
+        .tooltip__top
+          if(data.title)
+            .tooltip__title
+              if(data.task)
+                .tooltip__title-wrap
+                  span.tooltip__task=data.task
+                  span=data.title
+              else
+                span=data.title
+              svg.tooltip__close.svg
+                use(xlink:href='./img/sprite.svg#close')
+          if(data.search)
+            +input('tooltip-search', 'text', data.search.placeholder).tooltip__search
+      if block
+        block
+      if(data.button)
+        .tooltip__btn-wrap
+          +btn(data.button.txt).tooltip__add-btn

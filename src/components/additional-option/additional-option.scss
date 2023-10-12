@@ -1,0 +1,131 @@
+.additional-option-wrapper {
+  width: 100%;
+
+  &.is-active {
+    .additional-option__toggle {
+      transform: rotate(180deg);
+    }
+  }
+
+  &.always-open {
+    .additional-options-list {
+      height: auto;
+      overflow: auto;
+    }
+  }
+}
+
+.additional-option {
+  position: relative;
+  background-color: $background-grey;
+  border-radius: 16px;
+  padding: 16px 24px;
+  display: grid;
+  grid-template-columns: 24px 1fr auto;
+  width: 100%;
+  column-gap: 8px;
+  align-items: center;
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      fill: none;
+      stroke: $grey-light;
+    }
+  }
+
+  &__name {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__add,
+  &__toggle {
+    svg {
+      @include transition('transform, stroke');
+    }
+
+    cursor: pointer;
+    stroke: $grey-light;
+    @media (hover: hover) {
+      &:hover {
+        stroke: $text-color;
+
+        svg {
+          stroke: $text-color;
+        }
+      }
+    }
+  }
+
+  &__add {
+    display: inline-flex;
+    background-color: transparent;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border: none;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      flex-shrink: 0;
+      stroke: $grey-light;
+    }
+  }
+
+  &__buttons {
+    height: 24px;
+  }
+
+  &__quantity {
+    margin-left: 12px;
+    color: $grey-light;
+  }
+
+  .i-select.i-select--tooltip {
+    position: absolute;
+    top: calc(100% + 32px);
+    right: 24px;
+    width: 472px;
+    display: none;
+    &.is-active {
+      display: block;
+    }
+
+    .i-select__drop {
+      width: 520px;
+    }
+  }
+}
+
+.additional-options-list {
+  @include transition('height');
+  height: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.additional-options-list__inner {
+  padding-top: 8px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+@media (max-width: $mobile-big) {
+  .additional-option {
+    position: static;
+  }
+}

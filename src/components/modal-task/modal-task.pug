@@ -1,0 +1,135 @@
+mixin modal-task(data)
+  +modal().modal-task(class=`${data.mode === 'brigada' ? 'modal-task--brigada' : ''}`)
+    .left-side
+      .modal-header.container
+        span.modal-title Задание #12
+        .application-status-wrapper
+          .application-status.application-status--new Новое
+        +view-toggler({name: 'view-toggler3'}).modal-view-toggler
+      .modal-line.container
+        +btn('Свернуть', '', 'arrow-double', 'mode-text').modal-close(data-modal-close)
+        .modal-line__right
+          a(href="custom-link").modal-share
+            img(src="img/icons/link2.svg", alt="share")
+            span Поделиться
+      .modal-info.container
+
+        .modal-info__item
+          .modal-info__name
+            svg(width='24' height='24')
+              use(xlink:href='img/sprite.svg#check-list')
+            span Что нужно сделать
+          .modal-info__value
+            p.modal-info__value-txt Опиловка
+
+        .modal-info__item
+          .modal-info__name
+            svg(width='24' height='24')
+              use(xlink:href='img/sprite.svg#link')
+            span Взаимосвязаны
+          .modal-info__value
+            p.modal-info__value-txt.modal-info__value--connection #72, улица Одесская, 2
+        
+        .modal-info__item
+          .modal-info__name
+            svg(width='24' height='24')
+              use(xlink:href='img/sprite.svg#clock')
+            span Сроки выполнения
+          .modal-info__value
+            if(data.mode === 'brigada')
+              p.modal-info__value-txt 14.06.23 в 13:30 — 14.06.23 в 15:30
+            else
+              .modal-info__deadlines
+                .modal-info__deadline
+                  | Выберите дату начала
+                  svg.svg
+                    use(xlink:href='img/sprite.svg#calendar')
+                span.decor —
+                .modal-info__deadline
+                  | Выберите дату окончания
+                  svg.svg
+                    use(xlink:href='img/sprite.svg#calendar')
+
+        .modal-info__item.modal-info__item--border
+          .modal-info__name
+            svg(width='24' height='24')
+              use(xlink:href='img/sprite.svg#profilecircle')
+            span Исполнитель
+          .modal-info__value
+            +select({inputName: 'executor', inputSearch: false, placeholder: 'Выберите подразделение', clear: true}).i-select--city
+              +selectListItem("<div class='list-item'><span class='list-item__txt'>ЦТВ</span></div>", 'ЦТВ')
+              +selectListItem("<div class='list-item'><span class='list-item__txt'>ЦТС</span></div>", 'ЦТС')
+              +selectListItem("<div class='list-item'><span class='list-item__txt'>ЦВКХ</span></div>", 'ЦВКХ')
+              +selectListItem("<div class='list-item'><span class='list-item__txt'>Дизайнерский цех</span></div>", 'Дизайнерский цех')
+
+        .modal-info__item.modal-info__item--options
+          +additional-option({
+            name: 'Работы', 
+            icon: 'works',
+            innerItems: [
+              {checkbox: true, name: 'Уборка знаков', delete: true},
+              {checkbox: true, name: 'Обработка сварачного шва', addinfo: '#12 Аварийный элемент: Водонапорная башня', delete: true},
+              {checkbox: true, name: 'Выставление знаков', delete: true}
+            ],
+            openTooltip: 'tooltip-new-work',
+          })
+            +tooltip-new-work()
+        .modal-info__item.modal-info__item--options
+          +additional-option({
+            name: 'Аварийные элементы', 
+            icon: 'danger',
+            innerItems: [
+              {
+                number: '10', 
+                name: 'Сеть ливневой канализации<span>|</span>Водопроводный колодец с гидрантом', 
+                addinfo: 'Сталь<span>|</span>Длина 20 м<span>|</span>Ø 150 мм',
+                edit: true,
+                mode: 'emergency'
+              },
+            ],
+            openTooltip: 'new-emergency-element',
+            })
+            +tooltip-new-emergency-element()
+        
+        .modal-info__item.modal-info__item--options
+          +additional-option({
+            name: 'Средства малой механизации', 
+            icon: 'setting2',
+            innerItems: [
+              {
+                name: 'Болгарка BOSH', 
+                addinfo: 'Время работы 12 ч',
+                delete: true,
+                mode: 'flex',
+              },
+            ],
+            openTooltip: 'tooltip-small-mechanization',
+            })
+            +tooltip-small-mechanization()
+
+        .modal-info__item.modal-info__item--border.modal-info__item--comments
+          .modal-info__name
+            svg(width='24' height='24')
+              use(xlink:href='img/sprite.svg#comment')
+            span Комментарии
+          .modal-info__value
+            .modal-create-application__comments
+              //- +comment-area()
+              +textarea("comments", 'Напишите сообщение', 'comment')
+
+        .modal-info__item.modal-info__item-history
+          .modal-info__name
+            svg(width='24' height='24')
+              use(xlink:href='img/sprite.svg#clock')
+            span История
+          .modal-info__value
+            p.modal-info__value-txt
+              | Заявка создана
+              span.modal-additional Семён Вишневский 05.06.23 в 16:32
+        .modal-btn-wp
+          +btn('Отменить', 'close', '', 'mode-shadow').cancel
+      if(data.mode === 'brigada')
+        +modal-footer()
+    .right-side
+    
+    

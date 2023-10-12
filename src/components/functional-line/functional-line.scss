@@ -1,0 +1,142 @@
+.functional-line {
+  width: 100%;
+  background-color: $background-grey;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid $extra-light-blue;
+  border-top: 1px solid $extra-light-blue;
+
+  &.is-active {
+    border-color: $blue-light;
+  }
+
+  &__inner {
+    display: flex;
+    column-gap: 24px;
+    justify-content: space-between;
+  }
+
+  &__btns-wrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 24px;
+  }
+
+  &__decor {
+    width: 1px;
+    max-height: 16px;
+    height: 100%;
+    background-color: $extra-light-blue-2;
+  }
+
+  &__button {
+    position: relative;
+    z-index: auto;
+    &.is-active {
+      color: $blue-light;
+      svg {
+        fill: none;
+        stroke: $blue-light;
+      }
+    }
+
+    &--map-filter,
+    &--filter {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      column-gap: 8px;
+      white-space: nowrap;
+      cursor: pointer;
+
+      svg {
+        flex-shrink: 0;
+        width: 24px;
+        height: 24px;
+        fill: none;
+        stroke: $text-color;
+        transition: 0.25s linear;
+        transition-property: color, stroke;
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          .functional-line__button-txt {
+            color: $blue-light;
+          }
+          svg {
+            stroke: $blue-light;
+          }
+        }
+      }
+    }
+  }
+  &__options-list {
+    position: absolute;
+    top: 42px;
+    right: 0;
+
+    .list-options__el {
+      // txt
+      span {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+        letter-spacing: 0.067px;
+      }
+    }
+  }
+
+  &__date-filter {
+    width: 144px;
+    .i-select__arrow {
+      display: none;
+    }
+
+    .i-select__selected {
+      white-space: nowrap;
+      color: $blue-light;
+    }
+    .i-select__main {
+      padding: 0;
+      display: flex;
+      align-items: center;
+      column-gap: 8px;
+
+      &::before {
+        display: block;
+        width: 24px;
+        height: 24px;
+        content: url('../img/icons/lines.svg');
+      }
+    }
+  }
+}
+
+@media (max-width: $desktop) {
+  .functional-line {
+    &__inner {
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    &__btns-wrapper {
+      flex-wrap: wrap;
+      row-gap: 16px;
+    }
+  }
+}
+
+@media (max-width: $tablet) {
+  .functional-line {
+    &__decor {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: $mobile-big) {
+  .functional-line {
+    display: none;
+  }
+}

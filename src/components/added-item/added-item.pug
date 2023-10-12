@@ -1,0 +1,54 @@
+mixin added-item(data)
+  .added-item(class=`
+  ${data.mode ? `added-item--${data.mode}` : ''} 
+  ${data.status ? `status-${data.status}` : ''} 
+  ${data.state ? `state-${data.state}` : ''}` )&attributes(attributes)
+    if(data.checkbox)
+      +custom-checkbox({mode: 'green'})
+    if(data.number)
+      .added-item__number=`#${data.number}`
+    .added-item__info
+      .added-item__name!=data.name
+      if data.addinfo
+        .added-item__additional!=data.addinfo
+    .added-item__right
+      if data.time
+        .added-item__time=data.time
+      if data.loss
+        .added-item__loss=data.loss
+      if (data.status || data.state)
+        .added-item__status-wrapper
+          .status.added-item__status
+            if(data.mode === 'shutdown') 
+              case data.state
+                when 'no-active'
+                  | Не активно
+                when 'active'
+                  | Активно
+                when 'completed'
+                  | Завершено
+            else
+              case data.status
+                when 'new'
+                  | Новое
+                when 'in-work'
+                  | В работе
+                when 'completed'
+                  | Выполнено
+          if (data.state && data.state !== 'completed')
+            .status-toggler
+              case data.state
+                when 'active'
+                  svg
+                    use(xlink:href='img/sprite.svg#close')
+                when 'no-active'
+                  svg
+                    use(xlink:href='img/sprite.svg#playcircle')
+      if data.edit
+        svg.svg.added-item__tool
+          use(xlink:href='img/sprite.svg#edit')
+      if data.delete
+        svg.svg.added-item__tool
+          use(xlink:href='img/sprite.svg#trash')
+
+

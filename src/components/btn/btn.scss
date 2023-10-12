@@ -1,0 +1,158 @@
+.btn {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  column-gap: 8px;
+  align-items: center;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.077px;
+  height: 48px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  color: $white;
+  background-color: $blue-light;
+  margin: 0;
+  padding: 0 24px;
+  z-index: 1;
+  transition: 0.25s linear;
+  transition-property: color, background-color, border-color;
+  @media (hover: hover) {
+    &:hover {
+      background-color: $blue;
+    }
+  }
+  &:active {
+    background-color: $blue;
+  }
+  &.disabled,
+  &[disabled] {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: $white;
+    transition: 0.25s linear;
+    transition-property: color, stroke;
+  }
+  &--mode-dark {
+    background-color: rgba(255, 255, 255, 0.1);
+    @media (hover: hover) {
+      &:hover {
+        background-color: rgba($blue, 0.2);
+      }
+    }
+  }
+
+  &--mode-text {
+    background-color: transparent;
+    height: auto;
+    padding: 0;
+    white-space: nowrap;
+    color: $text-color;
+
+    svg {
+      stroke: $text-color;
+    }
+
+    span {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      @include transition('color');
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        & > span {
+          color: $blue-light;
+        }
+
+        background-color: transparent;
+
+        svg {
+          stroke: $blue-light;
+        }
+      }
+    }
+
+    &:active {
+      background-color: transparent;
+    }
+  }
+
+  &--mode-shadow {
+    width: 100%;
+    height: 48px;
+    background-color: $blue-light;
+
+    &.cancel {
+      box-shadow: 0px 8px 16px 0px rgba(105, 132, 230, 0.08);
+      color: $pink2;
+      background-color: $white;
+
+      svg {
+        stroke: $pink2;
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          background-color: $pink;
+          color: $white;
+          svg {
+            stroke: $white;
+          }
+        }
+      }
+    }
+  }
+
+  &--mode-icon {
+    padding: 12px;
+    border: 1px solid $extra-light-blue;
+    background-color: $white;
+
+    svg {
+      fill: none;
+      stroke: $grey-light;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: $blue-light;
+        color: $white;
+        svg {
+          stroke: $white;
+        }
+      }
+    }
+  }
+
+  &__data {
+    color: $grey-light;
+  }
+}
+
+.btn-inline {
+  display: inline-flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0;
+  svg {
+    fill: cornflowerblue;
+    margin-right: 12px;
+  }
+}
+
+@media (max-width: $mobile-big) {
+  .btn--mode-text span {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,41 @@
+.modal-create-application {
+  .i-select__search-input-wp {
+    width: 195px;
+  }
+  &__textarea {
+    margin-top: 24px;
+  }
+}
+
+.i-select.is-selected ~ .result-interconnected {
+  display: flex;
+}
+
+@media (max-width: $mobile-big) {
+  .modal-create-application {
+    .comment-area__select {
+      width: 250px;
+      top: 30px;
+      left: 0;
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .modal-create-application {
+    .comment-area {
+      padding: 12px;
+      padding-bottom: 48px;
+    }
+
+    .comment-area__buttons {
+      top: auto;
+      bottom: 0;
+    }
+
+    .comment__header {
+      flex-wrap: wrap;
+      // flex-direction: column;
+    }
+  }
+}

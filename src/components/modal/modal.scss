@@ -1,0 +1,591 @@
+.i-modal {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  right: 0;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(1px);
+  overflow: auto;
+  transition: 0.25s linear;
+  transition-property: opacity, visibility;
+  z-index: $modal-z-index;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &.is-horizontal {
+    .i-modal__inner {
+      display: flex;
+      align-items: stretch;
+    }
+
+    .i-modal__content {
+      max-width: 1456px;
+    }
+
+    .left-side {
+      border-right: 1px solid $blue-100;
+      max-width: 918px;
+    }
+
+    .right-side {
+      max-width: 538px;
+      padding: 36px 96px;
+      width: 100%;
+    }
+
+    .modal-info__item-history {
+      grid-template-columns: auto;
+
+      .modal-info__name {
+        margin-bottom: 36px;
+      }
+    }
+  }
+
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+    z-index: $modal-z-index;
+
+    .i-modal__content {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  &.i-modal {
+    &--2deep {
+      z-index: calc($modal-z-index + 2);
+      transition-property: opacity, visibility;
+    }
+
+    &--3deep {
+      z-index: calc($modal-z-index + 3);
+      transition-property: opacity, visibility;
+    }
+  }
+
+  &__close {
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    z-index: 2;
+    transition: 0.25s linear;
+    transition-property: background;
+    color: slategray;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      transition: 0.25s linear;
+      transition-property: fill, stroke, color;
+    }
+  }
+
+  &__content {
+    max-width: 918px;
+    width: 100%;
+    min-height: 100%;
+    // scroll контента модалки
+    height: 100%;
+    overflow: auto;
+    // - - - - -
+    background-color: $white;
+    border-radius: 24px 0px 0px 24px;
+    box-shadow: -48px 0px 96px 0px rgba(105, 132, 230, 0.16);
+    position: relative;
+    opacity: 0;
+    z-index: $modal-z-index;
+    transform: translateX(100%);
+    transition: 0.25s linear;
+    transition-property: transform opacity;
+
+    &.tooltip-open {
+      overflow: hidden;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__title {
+    position: relative;
+    margin-bottom: 6px;
+  }
+
+  &__subtitle {
+    text-align: center;
+    font-size: 18px;
+    line-height: 27px;
+    margin-bottom: 24px;
+  }
+}
+
+// ОБЩИЕ СТИЛИ ДЛЯ МОДАЛОК
+.modal-header {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 36px;
+  padding-bottom: 36px;
+}
+
+.modal-title {
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 48px;
+  margin-right: 24px;
+}
+
+.modal-line {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  background-color: $background-grey;
+  display: flex;
+  justify-content: space-between;
+
+  &__right {
+    display: flex;
+    column-gap: 36px;
+  }
+}
+
+.modal-share {
+  position: relative;
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+
+  &.is-active {
+    .modal-share__tooltip {
+      animation: 2s 1 tooltipShow;
+    }
+  }
+
+  img {
+    flex-shrink: 0;
+  }
+
+  &__tooltip {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 16px 40px;
+    border-radius: 16px;
+    background-color: $grey-light;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    // txt
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+    color: $white;
+  }
+}
+
+@keyframes tooltipShow {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  50% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.modal-info {
+  padding-top: 36px;
+  padding-bottom: 36px;
+
+  &__item {
+    display: grid;
+    grid-template-columns: 218px auto;
+    align-items: flex-start;
+    width: 100%;
+    column-gap: 36px;
+    margin-bottom: 24px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--small-margin {
+      margin-bottom: 20px;
+    }
+
+    &--options {
+      display: flex;
+      flex-direction: column;
+      row-gap: 16px;
+      grid-template-columns: auto;
+      width: 100%;
+    }
+
+    &--border {
+      margin: 36px 0;
+      padding: 36px 0;
+      border-top: 1px solid $extra-light-blue;
+      border-bottom: 1px solid $extra-light-blue;
+    }
+  }
+
+  &__name {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    color: $grey-light;
+    display: flex;
+    align-items: flex-start;
+    column-gap: 8px;
+    width: 100%;
+    flex-shrink: 0;
+
+    svg {
+      fill: none;
+      stroke: $grey-light;
+      flex-shrink: 0;
+    }
+  }
+
+  &__value {
+    line-height: 24px;
+
+    &-txt {
+      font-size: 16px;
+      &:not(:last-child) {
+        display: block;
+        margin-bottom: 24px;
+      }
+    }
+
+    &--connection {
+      color: $blue-light;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    display: block;
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__options-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 8px;
+    column-gap: 8px;
+
+    &--margin {
+      margin-top: 20px;
+    }
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  &__deadlines {
+    display: flex;
+    column-gap: 16px;
+    align-items: center;
+
+    .decor {
+      color: $grey-light;
+    }
+  }
+
+  &__deadline {
+    display: flex;
+    column-gap: 4px;
+    color: $input-color;
+    cursor: pointer;
+
+    svg {
+      stroke: $input-color;
+    }
+  }
+
+  &__value-address {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    span {
+      display: block;
+    }
+  }
+
+  &__area {
+    color: $grey-light;
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
+.modal-additional {
+  display: block;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  color: $grey-light;
+}
+
+.modal-location {
+  position: relative;
+  margin-top: 24px;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 100%;
+  height: 96px;
+  border-radius: 24px;
+  border: 1px solid $extra-light-blue;
+  overflow: hidden;
+  @include transition('height');
+
+  // Показываем инструменты
+  &.is-open {
+    height: 363px;
+
+    .map-resize-btn {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+
+    .ymaps-2-1-79-listbox {
+      display: block;
+    }
+
+    .ymaps-2-1-79-zoom {
+      display: flex;
+    }
+  }
+
+  .ymaps-2-1-79-listbox,
+  .ymaps-2-1-79-zoom {
+    display: none;
+  }
+
+  &__map {
+    width: 100%;
+    height: 100%;
+
+    .ymaps-2-1-79-inner-panes {
+      border-radius: 24px;
+    }
+
+    .ymaps-2-1-79-map {
+      background-color: transparent;
+      border-radius: 24px;
+    }
+  }
+
+  .map-resize-btn {
+    right: 24px;
+    top: 24px;
+    position: absolute;
+    // @include transition('top');
+
+    svg {
+      @include transition(transform);
+    }
+  }
+}
+
+.application-status {
+  display: inline-block;
+  width: auto;
+  height: 48px;
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &--new {
+    background-color: $violet;
+  }
+
+  &--in-work {
+    background-color: $blue-2;
+  }
+
+  &--deffer {
+    background-color: $orange;
+    color: $white;
+  }
+
+  &--canceled {
+    background-color: $grey-100;
+  }
+
+  &--completed {
+    background-color: $green;
+  }
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: $white;
+}
+
+.appeal-status {
+  display: inline-block;
+  width: auto;
+  height: 48px;
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &--new {
+    background-color: $pink;
+  }
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  color: $white;
+}
+
+.modal-close {
+  svg {
+    transform: rotate(180deg);
+  }
+}
+
+.modal-btn-wp {
+  background-color: $background-grey;
+  padding: 24px 36px;
+  border-radius: 24px;
+}
+
+.result-interconnected {
+  // padding-top: 16px;
+  display: none;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+@media (max-width: $tablet) {
+  .i-modal {
+    .modal-view-toggler {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: $mobile-big) {
+  .i-modal {
+    // height: calc(100vh - 60px);
+    // top: 60px;
+    padding-top: 60px;
+    background: rgba(38, 47, 61, 0.3);
+
+    .modal-header {
+      flex-direction: column-reverse;
+      padding-top: 24px;
+      padding-bottom: 24px;
+      row-gap: 8px;
+    }
+    &__content {
+      max-width: none;
+      border-radius: 0;
+      // scroll контента модалки
+      // height: 100%;
+      // overflow: auto;
+      // - - - - -
+    }
+
+    .modal-line {
+      display: none;
+    }
+  }
+  .modal-info {
+    padding-top: 24px;
+    padding-bottom: 24px;
+
+    &__item {
+      margin-bottom: 16px;
+
+      &--border {
+        margin-top: 16px;
+        margin-bottom: 24px;
+        padding: 24px 0;
+      }
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .i-modal {
+    .modal-info__item {
+      grid-template-columns: 1fr;
+      row-gap: 2px;
+
+      &--options {
+        row-gap: 8px;
+      }
+
+      &--comment {
+        row-gap: 20px;
+      }
+    }
+
+    .modal-location {
+      grid-column-start: 1;
+      grid-column-end: 1;
+    }
+
+    .modal-info__value {
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+  }
+}
+
+@media (max-width: $mobile-sm) {
+  .i-modal {
+    .modal-title {
+      margin: 0;
+    }
+
+    // .modal-info__item {
+    //   grid-template-columns: 150px auto;
+    //   column-gap: 20px;
+    // }
+  }
+
+  .appeal-status,
+  .application-status {
+    border-radius: 8px;
+    height: 28px;
+    padding: 6px 12px;
+  }
+}

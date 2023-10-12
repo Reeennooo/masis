@@ -1,0 +1,208 @@
+.container.tables-container
+  -
+    const table = {
+      mod: 'new-orders',
+      header: [
+        {
+          name: 'Новые',
+          count: '( 6 )',
+        }
+      ],
+      rows: [
+        {
+          cardtype: 'task',
+          columns: [
+            {
+              num: '#22',
+              tag: 'Обследование',
+            },
+            {
+              street: 'Улица Пушкина, 12',
+            },
+            {
+              time: '14.06.23 в 13:30 — 14.06.23 в 15:30'
+            },
+            {
+              setAssigment: true
+            },
+            {
+              join: true,
+              danger: true,
+              settings: true,
+              comments: true,
+            },
+          ]
+        },
+        {
+          cardtype: 'task',
+          columns: [
+            {
+              num: '#22',
+              tag: 'Выемка грунта',
+            },
+            {
+              street: 'Улица Пушкина, 12',
+            },
+            {
+              time: '14.06.23 в 13:30 — 14.06.23 в 15:30'
+            },
+            {
+              setAssigment: true
+            },
+            {
+              join: true,
+              danger: true,
+              settings: true,
+              comments: true,
+            },
+          ]
+        },
+        {
+          cardtype: 'task',
+          columns: [
+            {
+              num: '#22',
+              tag: 'Заварка трещины',
+            },
+            {
+              street: 'Улица Пушкина, 12',
+            },
+            {
+              time: '14.06.23 в 13:30 — 14.06.23 в 15:30'
+            },
+            {
+              setAssigment: true
+            },
+            {
+              join: true,
+              danger: true,
+              settings: true,
+              comments: true,
+            },
+          ]
+        },
+      ],
+    }
+  +table(table)
+
+  -
+    const table2 = {
+      mod: 'in-progress',
+      header: [
+        {
+          name: 'В работе',
+          count: '( 5 )', 
+        }
+        ],
+      rows: [
+        {
+          cardtype: 'task',
+          columns: [
+            {
+              num: '#22',
+              tag: 'Обследование',
+            },
+            {
+              street: 'Улица Пушкина, 12',
+            },
+            {
+              time: '14.06.23 в 13:30 — 14.06.23 в 15:30'
+            },
+            {
+              assigment: 'Бригада Павлова'
+            },
+            {
+              join: true,
+              danger: true,
+              settings: true,
+              comments: true,
+            },
+          ]
+        },
+        {
+          cardtype: 'task',
+          columns: [
+            {
+              num: '#21',
+              tag: 'Выемка грунта',
+            },
+            {
+              street: 'Улица Пушкина, 12',
+            },
+            {
+              time: '14.06.23 в 13:30 — 14.06.23 в 15:30'
+            },
+            {
+              assigment: 'Бригада Павлова'
+            },
+            {
+              join: true,
+              danger: true,
+              settings: true,
+              comments: true,
+            },
+          ]
+        },
+        {
+          cardtype: 'task',
+          columns: [
+            {
+              num: '#20',
+              tag: 'Заварка трещины',
+            },
+            {
+              street: 'Улица Пушкина, 12',
+            },
+            {
+              time: '14.06.23 в 13:30 — 14.06.23 в 15:30'
+            },
+            {
+              assigment: 'Бригада Павлова'
+            },
+            {
+              join: true,
+              danger: true,
+              settings: true,
+              comments: true,
+            },
+          ]
+        },
+        ],
+    }
+  +table(table2)
+
+  -
+    const table3 = {
+      mod: 'postponed',
+      header: [
+        {
+          name: 'Приостановлены',
+          count: '( 0 )',
+        }
+        ]
+    }
+  +table(table3)
+
+  -
+    const table4 = {
+      mod: 'done',
+      header: [
+        {
+          name: 'Выполнены',
+          count: '( 0 )',
+        }
+      ]
+    }
+  +table(table4)
+
+  -
+    const table5 = {
+      mod: 'cancel',
+      header: [
+        {
+          name: 'Отменены',
+          count: '( 0 )',
+        }
+      ]
+    }
+  +table(table5)

@@ -1,0 +1,23 @@
+.modal-task {
+  .modal-info__item--options {
+    margin-bottom: 36px;
+  }
+}
+
+@media (max-width: $mobile-big) {
+  .modal-task--brigada {
+    .modal-info__item--comments {
+      display: none;
+    }
+  }
+
+  .modal-task {
+    .modal-header {
+      padding-bottom: 0;
+    }
+
+    .modal-info__item--options {
+      margin-bottom: 24px;
+    }
+  }
+}

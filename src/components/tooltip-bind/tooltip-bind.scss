@@ -1,0 +1,48 @@
+.tooltip-bind {
+  width: 520px;
+  top: calc(100% + 12px);
+  left: -48px;
+
+  &__list {
+    max-height: 204px;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #262f3d;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.077px;
+    margin-bottom: 12px;
+    padding: 0 24px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--tag {
+      font-size: 14px;
+      line-height: 16px;
+      letter-spacing: 0.067px;
+      padding: 4px 8px;
+      border-radius: 8px;
+      background-color: #f6f9fc;
+    }
+
+    &--street {
+      flex: 1;
+      text-align: start;
+    }
+
+    &--time {
+      color: #9192ad;
+    }
+  }
+}

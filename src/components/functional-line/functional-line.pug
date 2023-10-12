@@ -1,0 +1,66 @@
+-
+  const listOptionsData = [
+    {
+    name: 'Номер обращения',
+    id: '1'
+    },
+    {
+    name: 'Категории',
+    id: '2'
+    },
+    {
+    name: 'Описания',
+    id: '3'
+    },
+    {
+    name: 'ФИО',
+    id: '4'
+    },
+    {
+    name: 'Телефон',
+    id: '5'
+    },
+    {
+    name: 'Тип обратившегося',
+    id: '6'
+    },
+    {
+    name: 'Адрес полностью',
+    id: '7'
+    },
+  ]
+
+mixin functional-line()
+  .functional-line
+    .container
+      .functional-line__inner
+        if(pageName === 'appeals')
+          +search('Найти обращение')
+        else
+          +search('Найти заявку')
+        if(pageName === 'map')
+          .functional-line__btns-wrapper
+            .functional-line__button.functional-line__button--filter(data-list='list-filter-options')
+              svg
+                use(xlink:href=`img/sprite.svg#setting`)
+              span.functional-line__button-txt Фильтровать
+              +list-filter-options.list-filter-options--map
+        if(pageName === 'appeals' || pageName === 'orders' || pageName === 'tasks')
+          .functional-line__btns-wrapper
+            .functional-line__button.functional-line__button--filter(data-list='list-filter-options')
+              svg
+                use(xlink:href=`img/sprite.svg#setting`)
+              span.functional-line__button-txt Фильтровать
+              +list-filter-options
+            .functional-line__decor
+            +date-filter()
+            .functional-line__decor
+            +btn("Показывать", "", "eye", "mode-text", '2')(data-list='list-options')
+              if(pageName === 'orders')
+                +list-options({data: listOptionsData, filterFor: true}).functional-line__options-list
+              else
+                +list-options({data: listOptionsData}).functional-line__options-list
+            if(pageName === 'appeals' || pageName === 'tasks')
+              .functional-line__decor
+              +btn("Объединять", "", "link", "mode-text").functional-line__button.is-active.functional-line__toggler
+

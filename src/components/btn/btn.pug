@@ -1,0 +1,25 @@
+mixin btn(txt, href, icon, mode, data)
+  if(href) 
+    a(href=href class=`btn ${mode ? `btn--${mode}` : ''}`)&attributes(attributes)
+      if(icon)
+        svg
+          use(xlink:href=`img/sprite.svg#${icon}`)
+      if(txt)
+        span=txt
+      if block
+        block
+  else 
+    button(class=`btn ${mode ? `btn--${mode}` : ''}`)&attributes(attributes)
+      if(icon)
+        svg
+          use(xlink:href=`img/sprite.svg#${icon}`)
+      if(txt)
+        span=txt
+      if(data)
+        .btn__data
+          | &#40;&nbsp;
+          span=data
+          | &nbsp;&#41;
+      if block
+        block
+

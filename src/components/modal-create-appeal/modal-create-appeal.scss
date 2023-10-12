@@ -1,0 +1,44 @@
+.i-select--create-appeal {
+  .i-select__search-input-wp {
+    width: 160px;
+  }
+
+  &.address {
+    .i-select__list {
+      max-height: 272px;
+    }
+  }
+}
+
+.result-interconnected {
+  display: none;
+
+  &.is-active {
+    display: flex;
+  }
+}
+
+.modal-create-appeal {
+  .modal-info__item--map {
+    margin-bottom: 36px;
+  }
+
+  &__interconnected-el {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    color: $blue-light;
+
+    svg {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      fill: none;
+      stroke: $input-color;
+    }
+  }
+
+  &__textarea {
+    margin-top: 24px;
+  }
+}

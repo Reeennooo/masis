@@ -1,0 +1,107 @@
+.modal-notifications {
+  &.no-notifications {
+    padding-top: 36px;
+    padding-bottom: 36px;
+  }
+
+  &__archive {
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 48px;
+    color: $grey-light;
+    cursor: pointer;
+    @include transition('color');
+    @media (hover: hover) {
+      &:hover {
+        color: $text-color;
+      }
+    }
+  }
+
+  .modal-title {
+    margin-right: 36px;
+  }
+
+  .modal-info {
+    padding-top: 46px;
+    padding-bottom: 46px;
+  }
+
+  &__no {
+    font-size: 72px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 96px;
+  }
+}
+
+.notification {
+  position: relative;
+  margin-bottom: 24px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &.is-new {
+    &::before {
+      position: absolute;
+      top: 5px;
+      left: -20px;
+      display: block;
+      content: '';
+      background-color: $pink2;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+  }
+
+  &__data {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    color: $grey-light;
+    margin-bottom: 4px;
+  }
+
+  &__action {
+    display: block;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    margin-bottom: 12px;
+
+    a {
+      color: $blue-light;
+      text-decoration: none;
+
+      @media (hover: hover) {
+        &:hover {
+          color: $text-color;
+        }
+      }
+    }
+  }
+
+  &__mark-person {
+    color: $grey-light;
+  }
+
+  &__images {
+    margin-top: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 12px;
+
+    img {
+      width: 72px;
+      height: 72px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 8px;
+    }
+  }
+}

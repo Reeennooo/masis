@@ -1,0 +1,37 @@
+header.header
+    .header__menu
+        .header__menu-profile
+            span Семён Вишневский
+        button.header__menu-btn
+            svg
+                use(xlink:href='img/sprite.svg#burger')
+    .container 
+        .header__panel
+            if (pageName === 'appeals' || pageName === 'orders' || pageName === 'tasks') 
+                .header__panel-group 
+                    h1.header__active-item
+                        if(pageName === 'main')
+                            | Карта
+                        if(pageName === 'appeals')
+                            | Обращения
+                        if(pageName === 'orders')
+                            | Заявки
+                        if(pageName === 'tasks')
+                            | Задания
+                    .header__panel-view 
+                        +btn('', '', 'kanban', 'mode-text').header__view-btn( data-id="1")
+                        +btn('', '', 'rowvertical', 'mode-text').header__view-btn.header__view-btn--active(data-id="2")
+                .header__panel-buttons
+                    case pageName
+                        when 'appeals'
+                            +btn("Новое обращение", "#", "plus", "")(data-modal='modal-create-appeal')
+                        when 'orders'
+                            +btn("Новая заявка", "#", "plus", "")(data-modal='modal-create-application')
+                    a.header__note(href="#" data-modal='modal-notifications')
+                        span.header__note-counter 3
+                        svg.header__note-icon
+                            use(xlink:href=`img/sprite.svg#notification`) 
+            else 
+                span.header__active-item Карта
+    +functional-line
+

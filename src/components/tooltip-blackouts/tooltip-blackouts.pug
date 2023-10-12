@@ -1,0 +1,31 @@
+mixin tooltip-blackouts()
+  +tooltip({title: 'Новое отключение', button: {txt: 'Добавить'}}).tooltip-blackouts
+    .tooltip__main
+      .tooltip__item
+        .tooltip__name Когда отключить
+        .tooltip__value
+          .tooltip__date
+            .tooltip__date-title 
+              span Выберите дату
+              svg.svg
+                use(xlink:href='img/sprite.svg#calendar')
+            .tooltip__date-options
+              +btn('Сейчас', '', '', 'mode-text').tooltip__date-btn
+              +btn('+ 2 ч', '', '', 'mode-text').tooltip__date-btn
+              +btn('+ 4 ч', '', '', 'mode-text').tooltip__date-btn
+              +btn('+ 6 ч', '', '', 'mode-text').tooltip__date-btn
+              +btn('+ 8 ч', '', '', 'mode-text').tooltip__date-btn
+      .tooltip__item
+        .tooltip__name Включить обратно
+        .tooltip__value
+          .tooltip__date
+            .tooltip__date-title 
+              span Выберите дату
+              svg.svg
+                use(xlink:href='img/sprite.svg#calendar')
+            .tooltip__date-options
+              +btn('Сейчас', '', '', 'mode-text').tooltip__date-btn
+              +btn('+ 2 ч', '', '', 'mode-text').tooltip__date-btn
+              +btn('+ 4 ч', '', '', 'mode-text').tooltip__date-btn
+              +btn('+ 6 ч', '', '', 'mode-text').tooltip__date-btn
+              +btn('+ 8 ч', '', '', 'mode-text').tooltip__date-btn

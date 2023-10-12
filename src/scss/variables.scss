@@ -1,0 +1,50 @@
+// Widths   420 479 575 640 767 991 1199 1400
+$mobile-sm: 479px;
+$mobile: 575px;
+$mobile-big: 767px;
+$tablet: 991px;
+$desktop: 1199px;
+$desktop-lg: 1599px;
+
+$grid-spacing: 96px;
+$grid-spacing-md: 40px;
+$grid-spacing-sm: 16px;
+
+$base-img: '../img/';
+
+$font-size: 16px;
+$line-height: 1.5;
+$letter-spacing: 0.077px;
+// Fonts
+$default-font: 'Lato', sans-serif; //400/700
+$additional-font: 'Lato', sans-serif; //400/700/800
+
+// Colors
+$text-color: #262f3d;
+$color-error: #e60000;
+$blue-dark: #262f3d;
+$blue: #1e679d;
+$blue-light: #468fc5;
+$blue-2: #1ab9eb;
+$extra-light-blue: #e7f6fb;
+$extra-light-blue-2: #d0f4ff;
+$green: #cefff3;
+$purple: #e8eaff;
+$blue-100: #e7f6fb;
+$blue-300: #c1d9eb;
+$input-color: #b9bad5;
+$white: #ffffff;
+$background-grey: #f6f9fc;
+$grey-light: #9192ad;
+$grey-100: #b2aba7;
+$violet: #6375d4;
+$pink: #eb1a72;
+$pink2: #ff3a81;
+$pink3: #ff459e;
+$orange: #e19421;
+$green: #27d8ad;
+
+// z-index
+$header-z-index: 10;
+$modal-z-index: 15;
+$sidebar-z-index: 20;

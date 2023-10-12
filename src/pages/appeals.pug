@@ -1,0 +1,9 @@
+extends ../pug/layout.pug
+block meta
+    title Обращения
+    meta(name='description' content='')
+    - const pageName = 'appeals'
+
+block content 
+    include ../blocks/appeals/appeals
+    include ../blocks/no-results/no-results

@@ -1,0 +1,161 @@
+mixin modal-application--dispatcher()
+  +modal().modal-application--dispatcher
+    .left-side
+      .modal-header.container
+        span.modal-title Заявка #68
+        .application-status-wrapper
+          .application-status.application-status--completed Новая
+          +button-deffer
+          button.next-status
+            svg(width='24' height='24')
+              use(xlink:href='img/sprite.svg#arrow-down')
+          .application-status-next
+        +view-toggler({name: 'view-toggler2'}).modal-view-toggler
+      .modal-line.container
+        +btn('Свернуть', '', 'arrow-double', 'mode-text').modal-close(data-modal-close)
+        .modal-line__right
+          +btn('Создать связанную', '', 'connect', 'mode-text')
+          a(href="custom-link").modal-share
+            img(src="img/icons/link2.svg", alt="share")
+            span Поделиться
+      form.modal-info.container
+
+        .modal-info__item
+          .modal-info__name
+            svg(width='24' height='24')
+              use(xlink:href='img/sprite.svg#flag')
+            span Основание
+          .modal-info__value
+            p.modal-info__value-txt Обращение
+
+        .modal-info__item.application-interconnected
+          .modal-info__name
+            svg(width='24' height='24')
+              use(xlink:href='img/sprite.svg#link')
+            span Взаимосвязаны
+          .modal-info__value
+            +select({inputName: 'interconnection', inputSearch: true, placeholder: 'Выберите обращения', selectedTxt: 'Мск'}).no-close.multiply-choice
+              +selectListItem("<div class='list-item'><span class='list-item__number'>#73</span><span class='list-item__txt'>улица Одесская, 2</span><span class='list-item__additional-info'>15 мин назад</span><label class='custom-checkbox'><input type='checkbox' name='connection' value='1'/><span></span></label></div>", '#73 улица Одесская, 2')
+              +selectListItem("<div class='list-item'><span class='list-item__number'>#73</span><span class='list-item__txt'>улица Курильская, 3</span><span class='list-item__additional-info'>30 мин назад</span><label class='custom-checkbox'><input type='checkbox' name='connection' value='1'/><span></span></label></div>", '#73 улица Курильская, 3')
+              +selectListItem("<div class='list-item'><span class='list-item__number'>#70</span><span class='list-item__txt'>улица Володина, 5</span><span class='list-item__additional-info'>1 час назад</span><label class='custom-checkbox'><input type='checkbox' name='connection' value='1'/><span></span></label></div>", '#70 улица Володина, 5')
+              +selectListItem("<div class='list-item'><span class='list-item__number'>#69</span><span class='list-item__txt'>улица Искровая, 14</span><span class='list-item__additional-info'>Сегодня, 11:45</span><label class='custom-checkbox'><input type='checkbox' name='connection' value='1'/><span></span></label></div>", '#71 улица Искровая, 14')
+              +selectListItem("<div class='list-item'><span class='list-item__number'>#68</span><span class='list-item__txt'>улица ул. Депо, 14</span><span class='list-item__additional-info'>Вчера, 19:43</span><label class='custom-checkbox'><input type='checkbox' name='connection' value='1'/><span></span></label></div>", '#68 улица ул. Депо, 14')
+              +selectListItem("<div class='list-item'><span class='list-item__number'>#67</span><span class='list-item__txt'>улица ул. Морская, 18</span><span class='list-item__additional-info'>15 марта, 20:31</span><label class='custom-checkbox'><input type='checkbox' name='connection' value='1'/><span></span></label></div>", '#67 улица ул. Морская, 18')
+            .result-interconnected
+
+        .modal-info__item
+          .modal-info__name
+            svg(width='24' height='24')
+              use(xlink:href='img/sprite.svg#clock')
+            span Сроки выполнения
+          .modal-info__value
+            .modal-info__deadlines
+              .modal-info__deadline
+                | Выберите дату начала
+                svg.svg
+                  use(xlink:href='img/sprite.svg#calendar')
+              span.decor —
+              .modal-info__deadline
+                | Выберите дату окончания
+                svg.svg
+                  use(xlink:href='img/sprite.svg#calendar')
+
+        .modal-info__item
+          .modal-info__name
+            svg(width='24' height='24')
+              use(xlink:href='img/sprite.svg#infocircle')
+            span В чем проблема
+          .modal-info__value
+            p.modal-info__value-txt Течь на земле
+            p.modal-info__value-txt Для предотвращения загрязнения водопроводной воды следует контролировать техническое обслуживание водопровода, периодически менять фильтры и краны. Также, необходимо избегать залива газонов и садов химическими удобрениями, не опресненной водой.
+
+        .modal-info__item.modal-info__item--map
+          .modal-info__name
+            svg(width='24' height='24')
+              use(xlink:href='img/sprite.svg#location')
+            span Где находится
+          .modal-info__value
+            .modal-info__value-address
+              span.modal-info__street улица Волнухина
+              span.modal-info__area микрорайон Магилат, Геленджик, Краснодарский край
+          .modal-location
+            .modal-location__map#map-id07775611
+            +btn('', '', 'arrow-double-up', 'mode-icon')(type='button').map-resize-btn
+
+        .modal-info__item.modal-info__item--border
+          .modal-info__name
+            svg(width='24' height='24')
+              use(xlink:href='img/sprite.svg#profilecircle')
+            span Исполнитель
+          .modal-info__value
+            +select({inputName: 'executor', inputSearch: false, placeholder: 'Выберите подразделение', clear: true}).i-select--city
+              +selectListItem("<div class='list-item'><span class='list-item__txt'>ЦТВ</span></div>", 'ЦТВ')
+              +selectListItem("<div class='list-item'><span class='list-item__txt'>ЦТС</span></div>", 'ЦТС')
+              +selectListItem("<div class='list-item'><span class='list-item__txt'>ЦВКХ</span></div>", 'ЦВКХ')
+              +selectListItem("<div class='list-item'><span class='list-item__txt'>Дизайнерский цех</span></div>", 'Дизайнерский цех')
+
+        .modal-info__item.modal-info__item--options
+          +additional-option({
+            name: 'Задания', 
+            icon: 'task',
+            toggler: true,
+            innerItems: [
+              {number: '1', name: 'Подвоз воды', status: 'new'},
+              {number: '2', name: 'Опиловка', addinfo: '27.04.23 в 00:32 — . . .', status: 'in-work'},
+              {number: '3', name: 'Выемка грунта', addinfo: '27.04.23 в 00:32 — 28.04.23 в 20:31', status: 'completed'}
+              ],
+            openTooltip: 'tooltip-new-work',
+            })
+            +tooltip-new-work()
+            //- +select({inputName: 'tasks', placeholder: 'Выберите задание или найдите по названию', inputSearch: true, title: 'Новое задание'}).i-select--tooltip
+            //-   +selectListItem("Обследование")
+            //-   +selectListItem("Выемка грунта")
+            //-   +selectListItem("Сварочные работы")
+            //-   +selectListItem("Подвоз воды")
+            //-   +selectListItem("Задание с подковыркой")
+          +additional-option({
+            name: 'Утечки', 
+            icon: 'drop',
+            toggler: true,
+            innerItems: [
+              {number: '15', name: 'Технологический сброс<span>|</span>Гидрант Ø23 мм', addinfo: 'Давление 30 м<span>|</span>27.04.23 в 00:32 — 28.04.23 в 20:31', loss: 'Потери: 524,67 м³', mode: 'leak'},
+            ],
+            openTooltip: 'leak',
+            })
+            +tooltip-leak()
+          +additional-option({
+            name: 'Отключения', 
+            icon: 'timer',
+            toggler: true,
+            innerItems: [
+              {number: '3', name: 'Отключение', addinfo: 'Запланировано : 27.04.23 в 00:32 — 28.04.23 в 20:31',  state: 'no-active', mode: 'shutdown'},
+              {number: '2', name: 'Отключение', addinfo: '27.04.23 в 00:32 — . . .',   state: 'active', time: '42 ч 24 мин', mode: 'shutdown'},
+              {number: '1', name: 'Отключение', addinfo: '27.04.23 в 00:32 — 28.04.23 в 20:31',  state: 'completed', time: '42 ч 24 мин', mode: 'shutdown'},
+            ],
+            openTooltip: 'blackouts',
+            })
+            +tooltip-blackouts()
+
+        .modal-info__item.modal-info__item--border.modal-info__item--comment
+          .modal-info__name
+            svg(width='24' height='24')
+              use(xlink:href='img/sprite.svg#comment')
+            span Комментарии
+          .modal-info__value
+            .modal-create-application__comments
+              //- +comment-area()
+              +textarea("comments", 'Напишите сообщение', 'comment')
+
+        .modal-info__item.modal-info__item-history
+          .modal-info__name
+            svg(width='24' height='24')
+              use(xlink:href='img/sprite.svg#clock')
+            span История
+          .modal-info__value
+            p.modal-info__value-txt
+              | Заявка создана
+              span.modal-additional Семён Вишневский 05.06.23 в 16:32
+
+        .modal-btn-wp
+          +btn('Отменить', '', 'close', 'mode-shadow').cancel
+    .right-side

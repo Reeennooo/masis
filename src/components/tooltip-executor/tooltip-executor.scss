@@ -1,0 +1,35 @@
+.tooltip-executor {
+  left: -24px;
+  top: calc(100% + 12px);
+
+  .tooltip__top {
+    display: none;
+  }
+
+  .tooltip__main {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+  &__item {
+    white-space: nowrap;
+    text-align: start;
+    padding: 8px 24px;
+    // txt
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+  }
+  width: auto;
+}
+
+@media (max-width: $mobile-big) {
+  .tooltip-executor {
+    .tooltip__top {
+      display: block;
+    }
+
+    .tooltip__title {
+      margin-bottom: 0;
+    }
+  }
+}

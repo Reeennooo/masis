@@ -1,0 +1,13 @@
+mixin search(propsPlaceholder)
+  .search
+    input(
+      type='text' 
+      name='search' 
+      placeholder=`${propsPlaceholder ? propsPlaceholder : 'Найти обращение или заявку'}`
+    )
+    svg.search__icon
+      use(xlink:href='img/sprite.svg#search')
+    .search__clear
+      svg
+        use(xlink:href='img/sprite.svg#close')
+    span.search__ruller

@@ -1,0 +1,181 @@
+mixin table(data)
+    .table(class=data.mod ? `table--${data.mod}` : '')
+        each item in data.header
+            .table__header
+                .table__title
+                    .table__name=item.name
+                    .table__count=item.count
+                .table__controls
+                    if item.add
+                        a(href="index.html").table__add
+                            svg
+                                use(xlink:href=`img/sprite.svg#plus`)
+
+                    a(href="index.html").table__toggle
+                        svg
+                            use(xlink:href=`img/sprite.svg#arrow-double`)
+        .table__container
+            if data.rows
+                each item in data.rows
+                    .table__row(data-modal=`${
+                        pageName === 'appeals' 
+                        ? 'modal-appeal' 
+                        : pageName === 'orders'
+                        ? 'modal-application--dispatcher'
+                        : pageName === 'tasks'
+                        ? 'modal-task'
+                        : ''
+                        }`
+                        class=`table__row--${item.cardtype}`
+                        )
+                        if(item.mod === 'draft')
+                            button.table__action-btn
+                                svg
+                                    use(xlink:href=`img/sprite.svg#trash`)
+                        if(item.mod === 'bind')
+                            button.table__action-btn
+                                svg
+                                    use(xlink:href=`img/sprite.svg#share-icon`)
+                        each column in item.columns
+                            .table__column(class=column.join ? 'table__column--join' : '')(class=column.intercom ? 'table__column--intercom' : '')(class=column.bind ? 'table__column--join' : '')
+                                if column.num
+                                    .table__num=column.num
+                                if column.tag
+                                    .table__tag(class=column.tagMod ? `table__tag--${column.tagMod}` : '')=column.tag
+                                if column.type
+                                    .table__type=column.type
+                                if column.draftTxt
+                                    .table__draft-txt=column.draftTxt
+                                if column.street
+                                    .table__street=column.street
+                                if column.time 
+                                    .table__time=column.time
+                                if column.assigment
+                                    .table__assigment=column.assigment
+                                if column.setAssigment
+                                    .table__set-assigment
+                                        +button-assigment()
+                                if column.city
+                                    .table__city=column.city
+                                if column.fio
+                                    .table__fio=column.fio
+                                if column.tel
+                                    a(href=`tel:${column.tel}`)=column.tel
+                                if column.businessType
+                                    .table__business-type=column.businessType
+                                if column.intercom
+                                    .table__intercom=column.intercom
+                                if column.task
+                                    span.table__short-info
+                                        svg.table__short-info-icon
+                                            use(xlink:href=`img/sprite.svg#task`)
+                                        span.table__short-info-counter 3/5
+                                if column.danger 
+                                    span.table__short-info   
+                                        svg.table__short-info-icon
+                                            use(xlink:href=`img/sprite.svg#danger`)
+                                        span.table__short-info-counter 2
+                                if column.settings 
+                                    span.table__short-info   
+                                        svg.table__short-info-icon
+                                            use(xlink:href=`img/sprite.svg#setting2`)
+                                        span.table__short-info-counter 2
+                                if column.interconnected
+                                    span.table__short-info
+                                        svg.table__short-info-icon
+                                            use(xlink:href=`img/sprite.svg#link`)
+                                        span.table__short-info-counter 5
+                                if column.drop
+                                    span.table__short-info
+                                        svg.table__short-info-icon
+                                            use(xlink:href=`img/sprite.svg#drop`)
+                                        span.table__short-info-counter 1
+                                if column.comments
+                                    span.table__short-info
+                                        svg.table__short-info-icon
+                                            use(xlink:href=`img/sprite.svg#comments`)
+                                        span.table__short-info-counter 1
+
+                                if column.join
+                                    a(href="#").table__join-link
+                                        svg
+                                            use(xlink:href=`img/sprite.svg#link`)
+                                        .table__join-counter #74
+                                
+                                if column.bind
+                                    .table__btn                                        
+                                        +button-bind
+            if data.groups
+                each item in data.groups
+                    .table__group(class=item.mod ? `table__group--${item.mod}` : '')
+                        .table__group-header
+                            a(href="#").table__group-title=item.title
+                            a(href="#").table__group-toggle
+                                svg
+                                    use(xlink:href=`img/sprite.svg#arrow-double`)
+                        .table__group-container
+                            if item.rows
+                                each row in item.rows
+                                    .table__row(class=`table__row--${row.cardtype}`)
+                                        each column in row.columns
+                                            .table__column(class=column.join ? 'table__column--join' : '')(class=column.intercom ? 'table__column--intercom' : '')
+                                                if column.num
+                                                    .table__num=column.num
+                                                if column.tag
+                                                    .table__tag(class=column.tagMod ? `table__tag--${column.tagMod}` : '')=column.tag
+                                                if column.type
+                                                    .table__type=column.type
+                                                if column.street
+                                                    .table__street=column.street
+                                                if column.assigment
+                                                    .table__assigment=column.assigment
+                                                if column.setAssigment
+                                                    .table__set-assigment
+                                                        a(href="#").table__set-assigment-link Назначить
+                                                if column.city
+                                                    .table__city=column.city
+                                                if column.fio
+                                                    .table__fio=column.fio
+                                                if column.tel
+                                                    a(href=`tel:${column.tel}`)=column.tel
+                                                if column.businessType
+                                                    .table__business-type=column.businessType
+                                                if column.intercom
+                                                    .table__intercom=column.intercom
+                                                if column.task
+                                                    span.table__short-info
+                                                        svg.table__short-info-icon
+                                                            use(xlink:href=`img/sprite.svg#task`)
+                                                        span.table__short-info-counter 3/5
+                                                if column.danger 
+                                                    span.table__short-info   
+                                                        svg.table__short-info-icon
+                                                            use(xlink:href=`img/sprite.svg#danger`)
+                                                        span.table__short-info-counter 2
+                                                if column.settings 
+                                                    span.table__short-info   
+                                                        svg.table__short-info-icon
+                                                            use(xlink:href=`img/sprite.svg#setting2`)
+                                                        span.table__short-info-counter 2
+                                                if column.interconnected
+                                                    span.table__short-info
+                                                        svg.table__short-info-icon
+                                                            use(xlink:href=`img/sprite.svg#link`)
+                                                        span.table__short-info-counter 5
+                                                if column.drop
+                                                    span.table__short-info
+                                                        svg.table__short-info-icon
+                                                            use(xlink:href=`img/sprite.svg#drop`)
+                                                        span.table__short-info-counter 1
+                                                if column.comments
+                                                    span.table__short-info
+                                                        svg.table__short-info-icon
+                                                            use(xlink:href=`img/sprite.svg#comments`)
+                                                        span.table__short-info-counter 1
+
+                                                if column.join
+                                                    .table__join
+                                                        a(href="#").table__join-link
+                                                            svg
+                                                                use(xlink:href=`img/sprite.svg#link`)
+                                                            .table__join-counter #74

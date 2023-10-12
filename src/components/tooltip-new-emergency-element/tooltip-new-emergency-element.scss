@@ -1,0 +1,36 @@
+.new-emergency-element {
+  right: 0;
+  top: -220px;
+
+  &__map {
+    width: 472px;
+    margin-top: 0;
+    margin-bottom: 24px;
+
+    &.is-open {
+      height: 472px;
+    }
+  }
+}
+
+.new-emergency-element__map {
+  .ymaps-2-1-79-listbox {
+    .ymaps-2-1-79-listbox__panel {
+      // Высота выпадающего списка
+      top: -85px;
+      right: calc(100% + 10px);
+      position: absolute;
+    }
+  }
+}
+
+@media (max-width: $mobile-big) {
+  .new-emergency-element {
+    &__map {
+      width: 100%;
+      &.is-open {
+        height: 524px;
+      }
+    }
+  }
+}

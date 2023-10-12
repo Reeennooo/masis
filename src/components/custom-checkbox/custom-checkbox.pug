@@ -1,0 +1,6 @@
+mixin custom-checkbox(data)
+  label.custom-checkbox(class=data.mode ? `custom-checkbox--${data.mode}` : "")
+    input(type="checkbox")
+    span
+
+//- <label class='custom-checkbox'><input type='checkbox' name='connection' value='1'/><span></span></label>

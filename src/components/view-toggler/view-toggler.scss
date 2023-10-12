@@ -1,0 +1,60 @@
+.view-toggler {
+  width: 100px;
+  height: 48px;
+  flex-shrink: 0;
+  background: $white;
+  box-shadow: 0px 8px 16px 0px rgba(70, 143, 197, 0.08);
+  border-radius: 12px;
+  border: 1px solid var(--stroke-primary, $extra-light-blue);
+  display: flex;
+  @include transition('box-shadow');
+  &:hover {
+    box-shadow: 0px 16px 16px 0px rgba(70, 143, 197, 0.16);
+  }
+}
+
+.view-toggler__custom-radio {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:first-child {
+    border-right: 1px solid var(--stroke-primary, $extra-light-blue);
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+
+    path {
+      @include transition('stroke');
+      stroke: $grey-light;
+    }
+
+    rect {
+      @include transition('stroke');
+      stroke: $grey-light;
+      fill: $grey-light;
+    }
+  }
+
+  input:checked ~ svg {
+    path {
+      stroke: $blue-light;
+    }
+
+    rect {
+      fill: $blue-light;
+      stroke: $blue-light;
+    }
+  }
+
+  input {
+    display: none;
+    z-index: -1;
+    opacity: 0;
+  }
+}

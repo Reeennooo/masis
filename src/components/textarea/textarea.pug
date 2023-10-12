@@ -1,0 +1,3 @@
+mixin textarea(name, placeholder, mode)
+  .textarea-wrapper(class=mode ? `textarea-wrapper--${mode}` : "")&attributes(attributes)
+    textarea(name=name, placeholder=placeholder)

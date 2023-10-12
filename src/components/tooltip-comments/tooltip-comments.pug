@@ -1,0 +1,6 @@
+mixin tooltip-comment()
+  +tooltip({title: 'Коментарии', task: 'Задание #12', mode: 'comments'}).tooltip-comments
+    .tooltip__main
+      +comment({creator: 'Семён Вишневский', images: true, txt: '<span>@Артур Сааков</span> срочно нужно прыгнуть с парашютом в центр Геленджикской бухты для устранения неполадок. С собой должно быть все необходимое оборудование', editable: true})
+      +comment({creator: 'Артур Сааков', txt: '<span>@Семён Вишневский</span> сам прыгай', answer: true})
+    +comment-area()
